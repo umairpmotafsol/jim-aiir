@@ -1,63 +1,95 @@
 import type { Metadata } from "next";
-import { LegalPage, type LegalSection } from "@/components/content/legal-page";
-import { site } from "@/lib/config";
-import { images } from "@/lib/images";
+import { PageHeader } from "@/components/ui/misc";
 
-export const metadata: Metadata = { title: "Refund and returns policy", description: `How refunds and returns work on ${site.name}.` };
+export const metadata: Metadata = { title: "Refund and Returns Policy" };
 
-// DRAFT COPY: needs legal review and client sign-off before launch.
-const sections: LegalSection[] = [
-  {
-    id: "overview",
-    title: "Overview",
-    body: [
-      `Each vendor on ${site.name} publishes its own refund, return and cancellation policy on its store page and product pages. This page explains the baseline that applies to every order.`,
-    ],
-  },
-  {
-    id: "physical",
-    title: "Physical products",
-    body: [
-      "You can return most physical products within 30 days of delivery if they are unused and in their original packaging. Contact the vendor first so they can confirm the return address.",
-      "Faulty or damaged items can be returned for a repair, replacement or refund, in line with your statutory rights.",
-    ],
-  },
-  {
-    id: "digital",
-    title: "Digital products and services",
-    body: [
-      "Digital downloads, API access and services that have started cannot usually be returned once delivered or accessed, unless they are faulty or not as described.",
-    ],
-  },
-  {
-    id: "refunds",
-    title: "How refunds are paid",
-    body: [
-      "Once the vendor receives and inspects your return, they will refund the purchase price to your original payment method, usually within 14 days. Original shipping costs are refunded when the item is faulty.",
-    ],
-  },
-  {
-    id: "cancellations",
-    title: "Cancelling an order",
-    body: ["You can cancel an order before it ships by contacting the vendor or our team. Orders that have already been dispatched follow the return process above."],
-  },
-  {
-    id: "help",
-    title: "Need help?",
-    body: [`If you can't reach a resolution with a vendor, contact us at ${site.email} and we'll help.`],
-  },
-];
-
-export default function RefundPage() {
+/* Text from the WordPress "Refund and Returns Policy" page (the WooCommerce sample policy). */
+export default function RefundReturnsPage() {
   return (
-    <LegalPage
-      title="Refund and returns policy"
-      eyebrow="Customer care"
-      crumb="Refund and returns"
-      intro="Clear, fair rules for returns, refunds and cancellations on every order."
-      image={images.glass}
-      updated="26 November 2026"
-      sections={sections}
-    />
+    <>
+      <PageHeader crumbs={[{ label: "Refund and Returns Policy" }]} />
+      <div className="container-page max-w-3xl py-16">
+        <article className="prose-aiir">
+          <p className="eyebrow">Policy</p>
+          <h1 className="mb-6 mt-3 text-4xl font-bold tracking-tight">Refund and Returns Policy</h1>
+          <p>
+            <strong className="text-ink">This is a sample page.</strong>
+          </p>
+
+          <h2>Overview</h2>
+          <p>Our refund and returns policy lasts 30 days. If 30 days have passed since your purchase, we can’t offer you a full refund or exchange.</p>
+          <p>
+            To be eligible for a return, your item must be unused and in the same condition that you received it. It must also be in the
+            original packaging.
+          </p>
+          <p>
+            Several types of goods are exempt from being returned. Perishable goods such as food, flowers, newspapers or magazines cannot
+            be returned. We also do not accept products that are intimate or sanitary goods, hazardous materials, or flammable liquids or
+            gases.
+          </p>
+          <p>Additional non-returnable items:</p>
+          <ul>
+            <li>Gift cards</li>
+            <li>Downloadable software products</li>
+            <li>Some health and personal care items</li>
+          </ul>
+          <p>To complete your return, we require a receipt or proof of purchase.</p>
+          <p>Please do not send your purchase back to the manufacturer.</p>
+          <p>There are certain situations where only partial refunds are granted:</p>
+          <ul>
+            <li>Book with obvious signs of use</li>
+            <li>CD, DVD, VHS tape, software, video game, cassette tape, or vinyl record that has been opened.</li>
+            <li>Any item not in its original condition, is damaged or missing parts for reasons not due to our error.</li>
+            <li>Any item that is returned more than 30 days after delivery</li>
+          </ul>
+
+          <h2>Refunds</h2>
+          <p>
+            Once your return is received and inspected, we will send you an email to notify you that we have received your returned item.
+            We will also notify you of the approval or rejection of your refund.
+          </p>
+          <p>
+            If you are approved, then your refund will be processed, and a credit will automatically be applied to your credit card or
+            original method of payment, within a certain amount of days.
+          </p>
+          <p>If you haven’t received a refund yet, first check your bank account again.</p>
+          <p>Then contact your credit card company, it may take some time before your refund is officially posted.</p>
+          <p>Next contact your bank. There is often some processing time before a refund is posted.</p>
+          <p>If you’ve done all of this and you still have not received your refund yet, please contact us at {"{email address}"}.</p>
+          <p>Only regular priced items may be refunded. Sale items cannot be refunded.</p>
+
+          <h2>Exchanges</h2>
+          <p>
+            We only replace items if they are defective or damaged. If you need to exchange it for the same item, send us an email at{" "}
+            {"{email address}"} and send your item to: {"{physical address}"}.
+          </p>
+
+          <h2>Gifts</h2>
+          <p>
+            If the item was marked as a gift when purchased and shipped directly to you, you’ll receive a gift credit for the value of
+            your return. Once the returned item is received, a gift certificate will be mailed to you.
+          </p>
+          <p>
+            If the item wasn’t marked as a gift when purchased, or the gift giver had the order shipped to themselves to give to you
+            later, we will send a refund to the gift giver and they will find out about your return.
+          </p>
+
+          <h2>Shipping returns</h2>
+          <p>To return your product, you should mail your product to: {"{physical address}"}.</p>
+          <p>
+            You will be responsible for paying for your own shipping costs for returning your item. Shipping costs are non-refundable. If
+            you receive a refund, the cost of return shipping will be deducted from your refund.
+          </p>
+          <p>Depending on where you live, the time it may take for your exchanged product to reach you may vary.</p>
+          <p>
+            If you are returning more expensive items, you may consider using a trackable shipping service or purchasing shipping
+            insurance. We don’t guarantee that we will receive your returned item.
+          </p>
+
+          <h2>Need help?</h2>
+          <p>Contact us at {"{email}"} for questions related to refunds and returns.</p>
+        </article>
+      </div>
+    </>
   );
 }

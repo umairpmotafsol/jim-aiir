@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useActionState, useState, type ReactNode } from "react";
 import { Star } from "lucide-react";
 import { submitInquiry, submitReview, type FormState } from "@/app/actions";
@@ -12,7 +11,7 @@ import type { Product, Review, Vendor } from "@/lib/types";
 
 type Props = { product: Product; reviews: Review[]; vendor: Vendor | null };
 
-export function ProductTabs({ product, reviews, vendor }: Props) {
+export function ProductTabs({ product, reviews }: Props) {
   const tabs: { id: string; label: string; content: ReactNode }[] = [
     {
       id: "description",
@@ -23,19 +22,27 @@ export function ProductTabs({ product, reviews, vendor }: Props) {
             <p key={i}>{p}</p>
           ))}
         </div>
-      ) : (
-        <p className="text-muted">The vendor hasn&apos;t added a description yet.</p>
-      ),
+      ) : null,
     },
     { id: "reviews", label: `Reviews (${reviews.length})`, content: <Reviews product={product} reviews={reviews} /> },
-    { id: "vendor", label: "Vendor & policies", content: <VendorInfo vendor={vendor} /> },
-    { id: "questions", label: "Ask a question", content: <InquiryForm product={product} vendor={vendor} /> },
+    { id: "offers", label: "More Offers", content: <p className="text-slate-600">No more offers for this product!</p> },
+    { id: "policies", label: "Store Policies", content: null },
+    {
+      id: "inquiries",
+      label: "Inquiries",
+      content: (
+        <div>
+          <h2 className="text-xl font-bold">General Inquiries</h2>
+          <p className="mt-3 text-slate-600">There are no inquiries yet.</p>
+        </div>
+      ),
+    },
   ];
   const [active, setActive] = useState(tabs[0].id);
 
   return (
-    <section id="product-tabs" className="mt-14 scroll-mt-32">
-      <div role="tablist" aria-label="Product information" className="flex gap-1 overflow-x-auto border-b border-line">
+    <section id="product-tabs" className="mt-16 scroll-mt-32 rounded-lg border border-line bg-white px-6 sm:px-8">
+      <div role="tablist" aria-label="Product information" className="flex gap-1 overflow-x-auto border-b border-line pt-2">
         {tabs.map((t) => (
           <button
             key={t.id}
@@ -45,8 +52,8 @@ export function ProductTabs({ product, reviews, vendor }: Props) {
             aria-controls={`ppanel-${t.id}`}
             onClick={() => setActive(t.id)}
             className={cn(
-              "-mb-px whitespace-nowrap border-b-2 px-4 py-3 text-sm font-semibold",
-              active === t.id ? "border-brand-600 text-brand-700" : "border-transparent text-slate-500 hover:text-slate-800",
+              "-mb-px whitespace-nowrap border-b-2 px-4 py-4 text-sm font-semibold transition-colors",
+              active === t.id ? "border-brand-600 text-ink" : "border-transparent text-slate-500 hover:text-slate-800",
             )}
           >
             {t.label}
@@ -73,19 +80,27 @@ function Reviews({ product, reviews }: { product: Product; reviews: Review[] }) 
   return (
     <div className="grid gap-10 lg:grid-cols-2">
       <div>
-        <div className="mb-6 flex items-center gap-4">
-          <p className="font-display text-4xl font-bold">{average.toFixed(1)}</p>
-          <div>
-            <Rating value={average} />
-            <p className="mt-1 text-sm text-muted">
-              Based on {reviews.length} review{reviews.length === 1 ? "" : "s"}
-            </p>
-          </div>
-        </div>
+        <ul className="mb-4 space-y-2 text-sm">
+          {[5, 4, 3, 2, 1].map((n) => {
+            const count = reviews.filter((r) => r.rating === n).length;
+            return (
+              <li key={n} className="flex items-center gap-3">
+                <span className="w-14 shrink-0">{n} Stars</span>
+                <span className="h-2 flex-1 overflow-hidden rounded-full bg-slate-100">
+                  <span className="block h-full rounded-md bg-amber-400" style={{ width: `${reviews.length ? (count / reviews.length) * 100 : 0}%` }} />
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+        <p className="mb-8 text-sm text-muted">
+          Average Star Rating: {average.toFixed(1)} out of 5 ({reviews.length} vote{reviews.length === 1 ? "" : "s"})
+        </p>
+        <h2 className="mb-4 text-xl font-bold">Reviews</h2>
         {reviews.length ? (
           <ul className="space-y-5">
             {reviews.map((r, i) => (
-              <li key={i} className="rounded-xl border border-line p-4">
+              <li key={i} className="rounded-md border border-line p-4">
                 <div className="flex items-center justify-between">
                   <p className="font-semibold">{r.author}</p>
                   <time className="text-xs text-muted" dateTime={r.date}>
@@ -98,11 +113,12 @@ function Reviews({ product, reviews }: { product: Product; reviews: Review[] }) 
             ))}
           </ul>
         ) : (
-          <p className="text-muted">There are no reviews yet. Be the first to review &ldquo;{product.name}&rdquo;.</p>
+          <p className="text-muted">There are no reviews yet.</p>
         )}
       </div>
-      <div className="rounded-2xl bg-surface p-6">
-        <h3 className="text-lg font-semibold">Write a review</h3>
+      <div className="rounded-lg bg-surface p-6">
+        <h3 className="text-lg font-semibold">{reviews.length ? "Add a review" : <>Be the first to review &ldquo;{product.name}&rdquo;</>}</h3>
+        <p className="mt-1 text-sm text-muted">Your email address will not be published. Required fields are marked *</p>
         {state.status === "success" ? (
           <div className="mt-4">
             <Notice tone="success">{state.message}</Notice>
@@ -146,49 +162,12 @@ function Reviews({ product, reviews }: { product: Product; reviews: Review[] }) 
   );
 }
 
-function VendorInfo({ vendor }: { vendor: Vendor | null }) {
-  if (!vendor) {
-    return <p className="text-muted">This product is sold and shipped by AIIR. See our <Link href="/refund-returns" className="font-semibold text-brand-700 hover:underline">refund and returns policy</Link>.</p>;
-  }
-  return (
-    <div className="grid gap-8 md:grid-cols-2">
-      <div>
-        <h3 className="text-lg font-semibold">{vendor.name}</h3>
-        <p className="mt-1 text-sm text-muted">
-          {vendor.city}, {vendor.country}
-        </p>
-        <p className="mt-3 text-sm text-slate-600">{vendor.about}</p>
-        <Link href={`/store/${vendor.slug}`} className="mt-4 inline-block text-sm font-semibold text-brand-700 hover:underline">
-          Visit store
-        </Link>
-      </div>
-      <dl className="space-y-4 text-sm">
-        <div>
-          <dt className="font-semibold">Shipping</dt>
-          <dd className="text-slate-600">{vendor.policies.shipping}</dd>
-        </div>
-        <div>
-          <dt className="font-semibold">Refunds</dt>
-          <dd className="text-slate-600">{vendor.policies.refund}</dd>
-        </div>
-        <div>
-          <dt className="font-semibold">Cancellations</dt>
-          <dd className="text-slate-600">{vendor.policies.cancellation}</dd>
-        </div>
-      </dl>
-    </div>
-  );
-}
-
 export function InquiryForm({ product, vendor }: { product?: Product; vendor: Vendor | null }) {
   const [state, action, pending] = useActionState(submitInquiry, initial);
   const e = state.errors ?? {};
   if (state.status === "success") return <Notice tone="success">{state.message}</Notice>;
   return (
-    <form action={action} noValidate className="max-w-xl space-y-4">
-      <p className="text-sm text-muted">
-        Questions go straight to {vendor ? vendor.name : "the AIIR team"}. Replies are sent to your email.
-      </p>
+    <form action={action} noValidate className="space-y-4">
       {product ? <input type="hidden" name="productId" value={product.id} /> : null}
       <input type="hidden" name="vendor" value={vendor?.slug ?? ""} />
       <div className="grid gap-4 sm:grid-cols-2">

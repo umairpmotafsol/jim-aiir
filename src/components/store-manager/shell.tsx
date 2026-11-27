@@ -76,12 +76,10 @@ export function StoreManagerShell({ children }: { children: ReactNode }) {
 
   return (
     <div className="grid gap-8 lg:grid-cols-[17rem_1fr]">
-      <aside className="h-fit overflow-hidden rounded-3xl bg-brand-950 text-brand-100 lg:sticky lg:top-40">
+      <aside className="h-fit overflow-hidden rounded-lg bg-ink text-slate-300 lg:sticky lg:top-40">
         <div className="relative isolate p-5">
-          <Image src={images.circuit} alt="" fill sizes="17rem" className="-z-20 object-cover opacity-30" />
-          <div className="absolute inset-0 -z-10 bg-gradient-to-b from-brand-950/40 to-brand-950" aria-hidden />
-          <div className="grid size-14 place-items-center rounded-2xl bg-gradient-to-br from-brand-500 to-accent-500 text-2xl font-extrabold text-white shadow-lift">
-            {(user.storeName ?? user.displayName).charAt(0)}
+          <div className="grid size-16 place-items-center rounded-lg bg-white/10 p-2.5">
+            <Image src={images.logo} alt="" width={286} height={180} className="h-auto w-full" />
           </div>
           <p className="mt-3 text-lg font-bold text-white">{user.storeName ?? user.displayName}</p>
           <p className="flex items-center gap-1.5 text-xs text-brand-300">
@@ -103,7 +101,7 @@ export function StoreManagerShell({ children }: { children: ReactNode }) {
                     href={href}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors",
+                      "flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium transition-colors",
                       active ? "bg-white text-brand-900" : "hover:bg-white/10 hover:text-white",
                     )}
                   >
@@ -119,7 +117,7 @@ export function StoreManagerShell({ children }: { children: ReactNode }) {
                   logout();
                   router.push("/my-account");
                 }}
-                className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium hover:bg-white/10 hover:text-white"
+                className="flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium hover:bg-white/10 hover:text-white"
               >
                 <LogOut className="size-4" aria-hidden /> Log out
               </button>

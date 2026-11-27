@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
+import { Placeholder } from "@/components/ui/placeholder";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, type FormEvent } from "react";
-import { Check, ImageOff, PackageX } from "lucide-react";
+import { PackageX } from "lucide-react";
 import { useCurrentUser } from "@/lib/store/auth";
 import { useVendorProducts, type VendorProductDraft } from "@/lib/store/vendor-products";
 import { toast } from "@/lib/store/toast";
@@ -15,7 +15,7 @@ import { cn } from "@/lib/format";
 import type { Category, Product } from "@/lib/types";
 import { useVendorCatalog } from "./use-vendor-catalog";
 
-type Props = { seed: Product[]; categories: Category[]; library: string[]; mode: "new" | "edit" };
+type Props = { seed: Product[]; categories: Category[]; mode: "new" | "edit" };
 
 export function ProductForm(props: Props) {
   const user = useCurrentUser();
@@ -37,7 +37,7 @@ export function ProductForm(props: Props) {
   return <Editor {...props} vendor={user.vendorSlug} />;
 }
 
-function Editor({ categories, library, vendor, initial }: Props & { vendor: string; initial?: VendorProductDraft }) {
+function Editor({ categories, vendor, initial }: Props & { vendor: string; initial?: VendorProductDraft }) {
   const router = useRouter();
   const save = useVendorProducts((s) => s.save);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -121,46 +121,24 @@ function Editor({ categories, library, vendor, initial }: Props & { vendor: stri
             <h3 className="font-bold">
               Product image <span className="font-normal text-slate-400">(optional)</span>
             </h3>
-            <p className="mt-1 text-sm text-muted">Pick an image from the AIIR library. Uploads arrive with the backend.</p>
-            <div className="mt-5 grid grid-cols-4 gap-3 sm:grid-cols-6" role="radiogroup" aria-label="Product image">
-              <button
-                type="button"
-                role="radio"
-                aria-checked={!image}
-                onClick={() => setImage("")}
-                className={cn("grid aspect-square place-items-center rounded-xl border-2 bg-surface text-slate-400", !image ? "border-brand-600" : "border-transparent")}
-              >
-                <ImageOff className="size-5" aria-hidden />
-                <span className="sr-only">No image</span>
-              </button>
-              {library.map((src) => (
-                <button
-                  key={src}
-                  type="button"
-                  role="radio"
-                  aria-checked={image === src}
-                  onClick={() => setImage(src)}
-                  className={cn(
-                    "relative aspect-square overflow-hidden rounded-xl border-2 transition-all",
-                    image === src ? "border-brand-600 ring-4 ring-brand-100" : "border-transparent hover:border-brand-300",
-                  )}
-                >
-                  <Image src={src} alt="" fill sizes="6rem" className="object-cover" />
-                  {image === src ? (
-                    <span className="absolute right-1.5 top-1.5 grid size-5 place-items-center rounded-full bg-brand-600 text-white">
-                      <Check className="size-3" aria-hidden />
-                    </span>
-                  ) : null}
-                </button>
-              ))}
-            </div>
+            <p className="mt-1 text-sm text-muted">Paste an image URL. Uploads arrive with the backend; until then the product shows a placeholder.</p>
+            <Input
+              label="Image URL"
+              name="imageUrl"
+              type="url"
+              value={image}
+              onChange={(ev) => setImage(ev.target.value)}
+              placeholder="https://"
+              error={e.image}
+              wrapperClassName="mt-4"
+            />
           </section>
         </div>
 
         <div className="space-y-6">
           <section className="card overflow-hidden">
-            <div className="relative grid aspect-square place-items-center bg-surface text-slate-300">
-              {image ? <Image src={image} alt="Selected product image" fill sizes="22rem" className="object-cover" /> : <ImageOff className="size-10" aria-hidden />}
+            <div className="relative aspect-square bg-surface">
+              <Placeholder seed={image || "new"} label={image ? "Image preview after upload" : undefined} size="lg" />
             </div>
             <p className="p-4 text-center text-xs text-muted">Preview of your main product image</p>
           </section>
@@ -173,7 +151,7 @@ function Editor({ categories, library, vendor, initial }: Props & { vendor: stri
                 { value: "published", label: "Published", text: "Visible in your store and the shop." },
                 { value: "draft", label: "Draft", text: "Only you can see it." },
               ].map((o) => (
-                <label key={o.value} className="flex cursor-pointer gap-3 rounded-xl border border-line p-3 has-[:checked]:border-brand-500 has-[:checked]:bg-brand-50">
+                <label key={o.value} className="flex cursor-pointer gap-3 rounded-md border border-line p-3 has-[:checked]:border-brand-500 has-[:checked]:bg-brand-50">
                   <input type="radio" name="status" value={o.value} defaultChecked={(initial?.status ?? "published") === o.value} className="mt-1 accent-brand-600" />
                   <span>
                     <span className="block text-sm font-semibold">{o.label}</span>

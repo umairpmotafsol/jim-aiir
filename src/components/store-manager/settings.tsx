@@ -1,13 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { useState, type FormEvent } from "react";
 import { useAuth, useCurrentUser } from "@/lib/store/auth";
 import { toast } from "@/lib/store/toast";
 import { phone as phoneSchema } from "@/lib/validation";
 import { Input, Textarea } from "@/components/ui/field";
 import { Button } from "@/components/ui/button";
-import { vendorBanner } from "@/lib/images";
 
 export function StoreSettings() {
   const user = useCurrentUser();
@@ -45,10 +43,9 @@ export function StoreSettings() {
 
       <section className="card overflow-hidden">
         <div className="relative h-40">
-          <Image src={vendorBanner(user.vendorSlug ?? "")} alt="" fill sizes="(min-width: 1024px) 60rem, 100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-950/70 to-transparent" aria-hidden />
+          <div className="absolute inset-0 bg-ink" aria-hidden />
           <p className="absolute bottom-4 left-28 text-lg font-bold text-white">{user.storeName ?? user.displayName}</p>
-          <div className="absolute -bottom-8 left-6 grid size-16 place-items-center rounded-2xl border-4 border-white bg-gradient-to-br from-brand-600 to-accent-500 text-2xl font-extrabold text-white">
+          <div className="absolute -bottom-8 left-6 grid size-16 place-items-center rounded-lg border-4 border-white bg-brand-600 text-2xl font-extrabold text-white">
             {(user.storeName ?? user.displayName).charAt(0)}
           </div>
         </div>

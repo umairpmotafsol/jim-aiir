@@ -1,135 +1,101 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import { ArrowRight, GraduationCap, Handshake, Lightbulb, ShieldCheck, Target, Users } from "lucide-react";
-import { getCategoryTree, getProducts, getVendors } from "@/lib/api/catalog";
-import { PageHeader, SectionHeading } from "@/components/ui/misc";
-import { LinkButton } from "@/components/ui/button";
-import { site } from "@/lib/config";
-import { images } from "@/lib/images";
+import { Check } from "lucide-react";
+import { PageHeader } from "@/components/ui/misc";
+import { Media } from "@/components/ui/placeholder";
+import { NewsletterBand } from "@/components/content/newsletter-band";
+import { images, team } from "@/lib/images";
 
-export const metadata: Metadata = {
-  title: "About us",
-  description: `${site.legalName}: who we are and why we built the AIIR marketplace.`,
-};
+export const metadata: Metadata = { title: "About Us" };
 
-const values = [
-  { icon: Lightbulb, title: "Practical innovation", text: "We champion AI that solves real problems for real people and businesses." },
-  { icon: ShieldCheck, title: "Trust & responsibility", text: "Vendors are reviewed, policies are clear, and ethical AI comes first." },
-  { icon: Handshake, title: "Community first", text: "We connect builders, researchers and buyers so good ideas find their audience." },
-  { icon: GraduationCap, title: "Open learning", text: "We share knowledge freely through events, articles and partnerships." },
+const stats = [
+  { value: "12", label: "Years Experience" },
+  { value: "20K", label: "Happy Customers" },
+  { value: "100%", label: "Clients Satisfaction" },
 ];
 
-export default async function AboutPage() {
-  const [{ total }, vendors, categories] = await Promise.all([getProducts({ perPage: 1 }), getVendors(), getCategoryTree()]);
-  const stats = [
-    { value: `${total}+`, label: "AI products listed" },
-    { value: `${vendors.length}+`, label: "Independent vendors" },
-    { value: `${categories.length}`, label: "Product categories" },
-    { value: "Dublin", label: "Home of AIIR" },
-  ];
+const vision = [
+  "Credibly innovate granular internal",
+  "Grantedly underconstructions reloaded",
+  "Interactively procrastinate high-payoff",
+  "Completely synergize resource taxing relationships",
+];
 
+export default function AboutPage() {
   return (
     <>
-      <PageHeader title="About AIIR" eyebrow="Who we are" image={images.team} crumbs={[{ label: "About us" }]}>
-        {site.legalName}: connecting the people who build artificial intelligence with the people who need it.
-      </PageHeader>
+      <PageHeader crumbs={[{ label: "About Us" }]} title="About Us" />
 
-      {/* Intro */}
-      <section className="container-page grid items-center gap-14 py-20 lg:grid-cols-2">
-        <div className="relative">
-          <div className="relative aspect-[4/5] w-4/5 overflow-hidden rounded-3xl">
-            <Image src={images.team2} alt="Team members reviewing work on screens" fill sizes="(min-width: 1024px) 40vw, 80vw" className="object-cover" />
-          </div>
-          <div className="absolute bottom-0 right-0 aspect-square w-1/2 overflow-hidden rounded-3xl border-8 border-white shadow-lift">
-            <Image src={images.chess} alt="A robotic arm playing chess against a person" fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover" />
-          </div>
-          <div className="absolute left-6 top-6 rounded-2xl bg-white/95 px-5 py-4 shadow-lift backdrop-blur">
-            <p className="text-3xl font-extrabold text-brand-600">{vendors.length}+</p>
-            <p className="text-xs font-semibold text-muted">vendor studios</p>
-          </div>
-        </div>
+      {/* History */}
+      <section className="container-page grid items-center gap-12 py-20 lg:grid-cols-2">
         <div>
-          <SectionHeading eyebrow="Our story" title="Built to make AI accessible" />
-          <div className="prose-aiir -mt-4">
-            <p>
-              The Artificial Intelligence Institute of Ireland brings together researchers, start-ups and established companies
-              working on AI. We started by recognising and celebrating Irish AI talent, and AIIR is the next step: a marketplace
-              where that talent can reach customers directly.
-            </p>
-            <p>
-              On AIIR, independent vendors sell AI applications, developer APIs, robotics, computer accessories and
-              consulting. Buyers get a single, trusted place to discover and compare tools, and vendors get their own storefront
-              with everything they need to run it.
-            </p>
-          </div>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            <div className="card flex gap-4 p-5">
-              <Target className="size-6 shrink-0 text-brand-600" aria-hidden />
-              <div>
-                <h3 className="font-bold">Our mission</h3>
-                <p className="mt-1 text-sm leading-6 text-muted">Help every organisation adopt AI with confidence.</p>
-              </div>
-            </div>
-            <div className="card flex gap-4 p-5">
-              <Users className="size-6 shrink-0 text-brand-600" aria-hidden />
-              <div>
-                <h3 className="font-bold">Our community</h3>
-                <p className="mt-1 text-sm leading-6 text-muted">Builders, researchers and buyers, growing together.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="relative isolate overflow-hidden bg-brand-950 py-16 text-white">
-        <Image src={images.datacenter} alt="" fill sizes="100vw" className="-z-20 object-cover opacity-25" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950 via-brand-950/80 to-brand-950" aria-hidden />
-        <dl className="container-page grid gap-8 text-center sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((s) => (
-            <div key={s.label}>
-              <dd className="text-5xl font-extrabold text-white">{s.value}</dd>
-              <dt className="mt-2 text-sm font-medium text-brand-200">{s.label}</dt>
-            </div>
-          ))}
-        </dl>
-      </section>
-
-      {/* Values */}
-      <section className="bg-surface py-20">
-        <div className="container-page">
-          <SectionHeading align="center" eyebrow="What we stand for" title="Our values" description="The principles behind every decision we make about the marketplace." />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {values.map(({ icon: Icon, title, text }) => (
-              <div key={title} className="card p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
-                <div className="grid size-12 place-items-center rounded-2xl bg-gradient-to-br from-brand-600 to-accent-500 text-white">
-                  <Icon className="size-6" aria-hidden />
-                </div>
-                <h3 className="mt-5 text-lg font-bold">{title}</h3>
-                <p className="mt-2 text-sm leading-6 text-muted">{text}</p>
+          <p className="eyebrow">History</p>
+          <h2 className="mt-3 text-4xl font-bold tracking-tight">Creative and renovate fashion trends</h2>
+          <p className="mt-5 max-w-xl leading-7 text-muted">
+            Collaboratively administrate empowered markets via plug-and-play maintain networks. Dynamically usable procrastinate B2B users
+            after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.
+          </p>
+          <dl className="mt-10 grid max-w-md grid-cols-3 gap-4">
+            {stats.map((s) => (
+              <div key={s.label} className="flex flex-col-reverse rounded-lg bg-surface p-4">
+                <dt className="mt-1 text-xs text-muted">{s.label}</dt>
+                <dd className="font-display text-3xl font-bold text-brand-700">{s.value}</dd>
               </div>
             ))}
+          </dl>
+        </div>
+        <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
+          <Media src={images.history} alt="A robotic hand holding a small part" sizes="(min-width: 1024px) 50vw, 100vw" />
+        </div>
+      </section>
+
+      {/* Vision */}
+      <section className="bg-surface py-20">
+        <div className="container-page grid items-center gap-12 lg:grid-cols-2">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-lg lg:order-none">
+            <Media src={images.vision} alt="A robotic hand reaching towards a human hand" sizes="(min-width: 1024px) 50vw, 100vw" />
+          </div>
+          <div>
+            <p className="eyebrow">Vision</p>
+            <h2 className="mt-3 text-4xl font-bold tracking-tight">We are marketpress</h2>
+            <p className="mt-5 leading-7 text-muted">
+              Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without
+              revolutionary ROI.
+            </p>
+            <ul className="mt-6 space-y-3">
+              {vision.map((v) => (
+                <li key={v} className="flex items-center gap-3 text-sm">
+                  <span className="grid size-6 shrink-0 place-items-center rounded-md bg-brand-100 text-brand-700">
+                    <Check className="size-3.5" aria-hidden />
+                  </span>
+                  {v}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
 
-      {/* Split CTA */}
-      <section className="container-page grid gap-6 py-20 lg:grid-cols-2">
-        {[
-          { image: images.heroRobot, eyebrow: "For buyers", title: "Find your next AI tool", href: "/shop", cta: "Browse the shop" },
-          { image: images.sell, eyebrow: "For builders", title: "Sell your AI work", href: "/vendor-register", cta: "Become a vendor" },
-        ].map((c) => (
-          <div key={c.title} className="relative isolate flex min-h-80 flex-col justify-end overflow-hidden rounded-3xl p-8 text-white sm:p-10">
-            <Image src={c.image} alt="" fill sizes="(min-width: 1024px) 50vw, 100vw" className="-z-20 object-cover" />
-            <div className="absolute inset-0 -z-10 bg-gradient-to-t from-brand-950/95 via-brand-950/50 to-transparent" aria-hidden />
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent-300">{c.eyebrow}</p>
-            <h2 className="mt-2 text-3xl font-extrabold text-white">{c.title}</h2>
-            <LinkButton href={c.href} variant="light" className="mt-6 w-fit">
-              {c.cta} <ArrowRight className="size-4" aria-hidden />
-            </LinkButton>
-          </div>
-        ))}
+      {/* Team */}
+      <section className="container-page py-20">
+        <p className="eyebrow">ANGELS</p>
+        <h2 className="mt-3 text-3xl font-bold tracking-tight">Meet with our Team</h2>
+        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {team.map((m) => (
+            <li key={m.name} className="rounded-lg border border-line bg-white p-6 text-center transition-colors hover:border-slate-300">
+              <span className="mx-auto grid size-20 place-items-center rounded-full bg-brand-50 text-xl font-semibold text-brand-700">
+                {m.name
+                  .split(" ")
+                  .map((w) => w[0])
+                  .join("")}
+              </span>
+              <h3 className="mt-4 font-semibold">{m.name}</h3>
+              <p className="mt-1 text-xs font-semibold tracking-wider text-muted">{m.role}</p>
+            </li>
+          ))}
+        </ul>
       </section>
+
+      <NewsletterBand />
     </>
   );
 }

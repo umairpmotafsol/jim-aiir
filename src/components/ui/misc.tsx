@@ -1,9 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, Star } from "lucide-react";
 import type { ReactNode } from "react";
-import { cn, discountPercent, formatMoney } from "@/lib/format";
-import { images } from "@/lib/images";
+import { cn, formatMoney } from "@/lib/format";
 
 export type Crumb = { label: string; href?: string };
 
@@ -36,38 +34,25 @@ export function Breadcrumbs({ items, tone = "light" }: { items: Crumb[]; tone?: 
   );
 }
 
-export function PageHeader({
-  title,
-  crumbs,
-  children,
-  image = images.datacenter,
-  eyebrow,
-  aside,
-}: {
-  title: string;
-  crumbs: Crumb[];
-  children?: ReactNode;
-  /** Background photo. Defaults to the data-centre shot. */
-  image?: string;
-  eyebrow?: string;
-  aside?: ReactNode;
-}) {
+/**
+ * The breadcrumb strip that sits under the header on every inner page, as on
+ * the WordPress site. Pass `title` only when the page has no visible heading of
+ * its own; it is then rendered for screen readers only.
+ */
+export function PageHeader({ crumbs, title }: { crumbs: Crumb[]; title?: string }) {
   return (
-    <div className="relative isolate overflow-hidden bg-brand-950 text-white">
-      <Image src={image} alt="" fill priority sizes="100vw" className="-z-20 object-cover opacity-45" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950 via-brand-950/85 to-brand-950/30" aria-hidden />
-      <div className="bg-grid absolute inset-0 -z-10 opacity-40 [mask-image:linear-gradient(to_bottom,black,transparent)]" aria-hidden />
-      <div className="container-page flex flex-col gap-6 py-12 sm:py-16 lg:flex-row lg:items-end lg:justify-between">
-        <div className="max-w-2xl animate-fade-up">
-          <Breadcrumbs items={crumbs} tone="dark" />
-          {eyebrow ? <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-accent-300">{eyebrow}</p> : null}
-          <h1 className={cn("text-3xl font-extrabold text-white sm:text-5xl", eyebrow ? "mt-2" : "mt-4")}>{title}</h1>
-          {children ? <div className="mt-4 text-base leading-7 text-brand-100 sm:text-lg">{children}</div> : null}
-        </div>
-        {aside ? <div className="shrink-0">{aside}</div> : null}
+    <div className="border-b border-line bg-surface">
+      <div className="container-page py-5">
+        <Breadcrumbs items={crumbs} />
+        {title ? <h1 className="sr-only">{title}</h1> : null}
       </div>
     </div>
   );
+}
+
+/** A titled white panel, used for the content blocks on inner pages. */
+export function Panel({ children, className }: { children: ReactNode; className?: string }) {
+  return <div className={cn("rounded-lg border border-line bg-white p-6 shadow-card sm:p-8", className)}>{children}</div>;
 }
 
 export function Price({
@@ -87,7 +72,7 @@ export function Price({
   const big = size === "lg";
   return (
     <p className={cn("flex flex-wrap items-baseline gap-2", className)}>
-      <span className={cn("font-bold text-ink", big ? "text-3xl" : "text-base")}>
+      <span className={cn("font-bold", onSale && regularPrice > price ? "text-accent-700" : "text-ink", big ? "text-3xl" : "text-base")}>
         <span className="sr-only">{onSale ? "Sale price: " : "Price: "}</span>
         {formatMoney(price)}
       </span>
@@ -97,23 +82,31 @@ export function Price({
             <span className="sr-only">Original price: </span>
             {formatMoney(regularPrice)}
           </span>
-          <span className="rounded bg-red-50 px-1.5 py-0.5 text-xs font-semibold text-red-600">
-            -{discountPercent(regularPrice, price)}%
-          </span>
         </>
       ) : null}
     </p>
   );
 }
 
-export function Rating({ value, count, className }: { value: number; count?: number; className?: string }) {
+export function Rating({
+  value,
+  count,
+  className,
+  tone = "light",
+}: {
+  value: number;
+  count?: number;
+  className?: string;
+  /** Use "dark" on navy backgrounds so empty stars stay visibly empty. */
+  tone?: "light" | "dark";
+}) {
   return (
     <div className={cn("flex items-center gap-1.5", className)}>
       <div className="flex" role="img" aria-label={`Rated ${value.toFixed(1)} out of 5`}>
         {[1, 2, 3, 4, 5].map((i) => (
           <Star
             key={i}
-            className={cn("size-4", i <= Math.round(value) ? "fill-amber-400 text-amber-400" : "fill-slate-200 text-slate-200")}
+            className={cn("size-4", i <= Math.round(value) ? "fill-amber-400 text-amber-400" : tone === "dark" ? "fill-transparent text-white/40" : "fill-slate-200 text-slate-200")}
             aria-hidden
           />
         ))}
@@ -139,9 +132,9 @@ export function EmptyState({
   action?: ReactNode;
 }) {
   return (
-    <div className="bg-dots relative flex flex-col items-center overflow-hidden rounded-3xl border border-line bg-surface px-6 py-16 text-center">
+    <div className="flex flex-col items-center rounded-lg border border-line bg-surface px-6 py-16 text-center">
       {icon ? (
-        <div className="mb-5 grid size-16 place-items-center rounded-2xl bg-gradient-to-br from-brand-600 to-accent-500 text-white shadow-lift">
+        <div className="mb-5 grid size-14 place-items-center rounded-lg bg-brand-50 text-brand-700">
           {icon}
         </div>
       ) : null}

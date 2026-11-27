@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { Media } from "@/components/ui/placeholder";
 import { useState } from "react";
 import { ChevronDown, ClipboardList } from "lucide-react";
 import { useCurrentUser } from "@/lib/store/auth";
@@ -45,7 +45,7 @@ export function VendorOrders() {
                 aria-pressed={filter === s}
                 onClick={() => setFilter(s)}
                 className={cn(
-                  "rounded-full border px-4 py-1.5 text-sm font-semibold",
+                  "rounded-md border px-4 py-1.5 text-sm font-semibold",
                   filter === s ? "border-brand-600 bg-brand-600 text-white" : "border-line bg-white text-slate-600 hover:border-brand-300",
                 )}
               >
@@ -82,7 +82,7 @@ export function VendorOrders() {
                         setStatus(o.id, next);
                         toast.success(`Order #${o.number} marked as ${orderStatusLabel[next].toLowerCase()}.`);
                       }}
-                      className={cn("h-9 rounded-full border-0 px-3 text-xs font-semibold focus:ring-4 focus:ring-brand-100", statusTone[o.status])}
+                      className={cn("h-9 rounded-md border-0 px-3 text-xs font-semibold focus:ring-4 focus:ring-brand-100", statusTone[o.status])}
                     >
                       {(Object.keys(orderStatusLabel) as OrderStatus[]).map((s) => (
                         <option key={s} value={s}>
@@ -104,9 +104,9 @@ export function VendorOrders() {
                     <div id={`order-${o.id}`} className="grid gap-6 border-t border-line bg-surface p-5 md:grid-cols-[1fr_16rem]">
                       <ul className="space-y-3">
                         {o.vendorLines.map((l) => (
-                          <li key={l.productId} className="flex items-center gap-4 rounded-xl bg-white p-3">
+                          <li key={l.productId} className="flex items-center gap-4 rounded-md bg-white p-3">
                             <span className="relative size-12 shrink-0 overflow-hidden rounded-lg bg-surface">
-                              {l.image ? <Image src={l.image} alt="" fill sizes="3rem" className="object-cover" /> : null}
+                              <Media src={l.image} alt="" sizes="3rem" seed={l.name} size="sm" />
                             </span>
                             <span className="flex-1 text-sm font-semibold">
                               {l.name} <span className="font-normal text-muted">× {l.quantity}</span>

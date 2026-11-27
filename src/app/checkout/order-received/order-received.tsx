@@ -27,7 +27,7 @@ export function OrderReceived() {
 
   return (
     <div className="space-y-8">
-      <div className="flex items-start gap-4 rounded-2xl border border-emerald-200 bg-emerald-50 p-6">
+      <div className="flex items-start gap-4 rounded-lg border border-emerald-200 bg-emerald-50 p-6">
         <CircleCheck className="size-8 shrink-0 text-emerald-600" aria-hidden />
         <div>
           <h2 className="text-xl font-bold text-emerald-900">Thank you. Your order has been received.</h2>

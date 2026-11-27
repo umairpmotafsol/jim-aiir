@@ -6,7 +6,7 @@ import type { Address } from "@/lib/store/auth";
 function AddressBlock({ title, address, extra }: { title: string; address: Address; extra?: string[] }) {
   const country = countries.find((c) => c.code === address.country)?.name ?? address.country;
   return (
-    <div className="rounded-xl border border-line p-5">
+    <div className="rounded-md border border-line p-5">
       <h3 className="mb-2 text-sm font-semibold uppercase tracking-wider text-slate-500">{title}</h3>
       <address className="text-sm not-italic leading-6 text-slate-700">
         {address.firstName} {address.lastName}
@@ -33,7 +33,7 @@ function AddressBlock({ title, address, extra }: { title: string; address: Addre
 export function OrderDetails({ order }: { order: Order }) {
   return (
     <div className="space-y-8">
-      <dl className="grid gap-4 rounded-xl bg-surface p-5 text-sm sm:grid-cols-4">
+      <dl className="grid gap-4 rounded-md bg-surface p-5 text-sm sm:grid-cols-4">
         <div>
           <dt className="text-muted">Order number</dt>
           <dd className="font-semibold">#{order.number}</dd>
@@ -52,7 +52,7 @@ export function OrderDetails({ order }: { order: Order }) {
         </div>
       </dl>
 
-      <div className="overflow-hidden rounded-xl border border-line">
+      <div className="overflow-hidden rounded-md border border-line">
         <table className="w-full text-sm">
           <thead className="bg-surface text-left text-xs uppercase tracking-wider text-muted">
             <tr>
@@ -94,7 +94,7 @@ export function OrderDetails({ order }: { order: Order }) {
       </div>
 
       {order.notes ? (
-        <div className="rounded-xl border border-line p-5 text-sm">
+        <div className="rounded-md border border-line p-5 text-sm">
           <h3 className="mb-1 font-semibold">Order notes</h3>
           <p className="text-slate-600">{order.notes}</p>
         </div>

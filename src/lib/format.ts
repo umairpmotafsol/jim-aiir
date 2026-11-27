@@ -1,8 +1,10 @@
 import { commerce } from "./config";
 
+// "narrowSymbol" prints $70 rather than US$70, as the WordPress shop does.
 const money = new Intl.NumberFormat(commerce.locale, {
   style: "currency",
   currency: commerce.currency,
+  currencyDisplay: "narrowSymbol",
   minimumFractionDigits: 0,
   maximumFractionDigits: 2,
 });

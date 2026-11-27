@@ -1,352 +1,96 @@
 {
   "products": {
-    "2200": [
-      {
-        "src": "/images/products/2200-1.webp",
-        "thumb": "/images/products/2200-1-thumb.webp",
-        "pexels": 9534649
-      },
-      {
-        "src": "/images/products/2200-2.webp",
-        "thumb": "/images/products/2200-2-thumb.webp",
-        "pexels": 8566526
-      }
-    ],
-    "2207": [
-      {
-        "src": "/images/products/2207-1.webp",
-        "thumb": "/images/products/2207-1-thumb.webp",
-        "pexels": 8439093
-      },
-      {
-        "src": "/images/products/2207-2.webp",
-        "thumb": "/images/products/2207-2-thumb.webp",
-        "pexels": 8439082
-      }
-    ],
-    "2724": [
-      {
-        "src": "/images/products/2724-1.webp",
-        "thumb": "/images/products/2724-1-thumb.webp",
-        "pexels": 7006873
-      },
-      {
-        "src": "/images/products/2724-2.webp",
-        "thumb": "/images/products/2724-2-thumb.webp",
-        "pexels": 17483868
-      }
-    ],
-    "2728": [
-      {
-        "src": "/images/products/2728-1.webp",
-        "thumb": "/images/products/2728-1-thumb.webp",
-        "pexels": 2599244
-      },
-      {
-        "src": "/images/products/2728-2.webp",
-        "thumb": "/images/products/2728-2-thumb.webp",
-        "pexels": 6019019
-      }
-    ],
-    "2753": [
-      {
-        "src": "/images/products/2753-1.webp",
-        "thumb": "/images/products/2753-1-thumb.webp",
-        "pexels": 16380906
-      },
-      {
-        "src": "/images/products/2753-2.webp",
-        "thumb": "/images/products/2753-2-thumb.webp",
-        "pexels": 20870797
-      }
-    ],
-    "2754": [
-      {
-        "src": "/images/products/2754-1.webp",
-        "thumb": "/images/products/2754-1-thumb.webp",
-        "pexels": 8386437
-      },
-      {
-        "src": "/images/products/2754-2.webp",
-        "thumb": "/images/products/2754-2-thumb.webp",
-        "pexels": 17489157
-      }
-    ],
-    "2755": [
-      {
-        "src": "/images/products/2755-1.webp",
-        "thumb": "/images/products/2755-1-thumb.webp",
-        "pexels": 14314636
-      },
-      {
-        "src": "/images/products/2755-2.webp",
-        "thumb": "/images/products/2755-2-thumb.webp",
-        "pexels": 17483867
-      }
-    ],
-    "2756": [
-      {
-        "src": "/images/products/2756-1.webp",
-        "thumb": "/images/products/2756-1-thumb.webp",
-        "pexels": 8728291
-      },
-      {
-        "src": "/images/products/2756-2.webp",
-        "thumb": "/images/products/2756-2-thumb.webp",
-        "pexels": 8849295
-      },
-      {
-        "src": "/images/products/2756-3.webp",
-        "thumb": "/images/products/2756-3-thumb.webp",
-        "pexels": 17483868
-      }
-    ],
-    "3019": [
-      {
-        "src": "/images/products/3019-1.webp",
-        "thumb": "/images/products/3019-1-thumb.webp",
-        "pexels": 8566534
-      }
-    ],
-    "3024": [
-      {
-        "src": "/images/products/3024-1.webp",
-        "thumb": "/images/products/3024-1-thumb.webp",
-        "pexels": 4578660
-      },
-      {
-        "src": "/images/products/3024-2.webp",
-        "thumb": "/images/products/3024-2-thumb.webp",
-        "pexels": 6248959
-      }
-    ],
-    "3186": [
-      {
-        "src": "/images/products/3186-1.webp",
-        "thumb": "/images/products/3186-1-thumb.webp",
-        "pexels": 8294554
-      }
-    ],
-    "3187": [
-      {
-        "src": "/images/products/3187-1.webp",
-        "thumb": "/images/products/3187-1-thumb.webp",
-        "pexels": 8849287
-      },
-      {
-        "src": "/images/products/3187-2.webp",
-        "thumb": "/images/products/3187-2-thumb.webp",
-        "pexels": 7688592
-      }
-    ],
-    "3375": [
-      {
-        "src": "/images/products/3375-1.webp",
-        "thumb": "/images/products/3375-1-thumb.webp",
-        "pexels": 8294605
-      },
-      {
-        "src": "/images/products/3375-2.webp",
-        "thumb": "/images/products/3375-2-thumb.webp",
-        "pexels": 8386426
-      },
-      {
-        "src": "/images/products/3375-3.webp",
-        "thumb": "/images/products/3375-3-thumb.webp",
-        "pexels": 8566445
-      },
-      {
-        "src": "/images/products/3375-4.webp",
-        "thumb": "/images/products/3375-4-thumb.webp",
-        "pexels": 8294663
-      },
-      {
-        "src": "/images/products/3375-5.webp",
-        "thumb": "/images/products/3375-5-thumb.webp",
-        "pexels": 8566526
-      }
-    ],
-    "3726": [
-      {
-        "src": "/images/products/3726-1.webp",
-        "thumb": "/images/products/3726-1-thumb.webp",
-        "pexels": 8566470
-      }
-    ],
-    "3750": [
-      {
-        "src": "/images/products/3750-1.webp",
-        "thumb": "/images/products/3750-1-thumb.webp",
-        "pexels": 7988114
-      }
-    ],
-    "3768": [
-      {
-        "src": "/images/products/3768-1.webp",
-        "thumb": "/images/products/3768-1-thumb.webp",
-        "pexels": 6424583
-      },
-      {
-        "src": "/images/products/3768-2.webp",
-        "thumb": "/images/products/3768-2-thumb.webp",
-        "pexels": 7988086
-      }
-    ],
-    "3782": [
-      {
-        "src": "/images/products/3782-1.webp",
-        "thumb": "/images/products/3782-1-thumb.webp",
-        "pexels": 35673122
-      }
+    "3786": [
+      "Staging upload: andrea-de-santis-zwd435-ewb4-unsplash.webp (Pexels/Unsplash)",
+      "Pexels photo 8566467"
     ],
     "3783": [
-      {
-        "src": "/images/products/3783-1.webp",
-        "thumb": "/images/products/3783-1-thumb.webp",
-        "pexels": 8728380
-      }
+      "Pexels photo 8728380"
     ],
-    "3786": [
-      {
-        "src": "/images/products/3786-1.webp",
-        "thumb": "/images/products/3786-1-thumb.webp",
-        "pexels": 8294654
-      },
-      {
-        "src": "/images/products/3786-2.webp",
-        "thumb": "/images/products/3786-2-thumb.webp",
-        "pexels": 8566467
-      }
+    "3782": [
+      "Pexels photo 35673122"
+    ],
+    "3768": [
+      "Pexels photo 6424583",
+      "Pexels photo 7988086"
+    ],
+    "3750": [
+      "Pexels photo 7988114"
+    ],
+    "3726": [
+      "Pexels photo 8294606"
+    ],
+    "3024": [
+      "Pexels photo 4578660",
+      "Pexels photo 6248959"
+    ],
+    "3375": [
+      "Pexels photo 8294605",
+      "Pexels photo 8386426",
+      "Pexels photo 8566445",
+      "Pexels photo 8294663",
+      "Pexels photo 8566526"
+    ],
+    "3186": [
+      "Pexels photo 8294554"
+    ],
+    "3187": [
+      "Pexels photo 8849287",
+      "Pexels photo 7688592"
+    ],
+    "3019": [
+      "Pexels photo 8566534"
+    ],
+    "2756": [
+      "Pexels photo 6804068",
+      "Staging upload: aidin-geranrekab-bv-p23fxxhi-unsplash.webp (Pexels/Unsplash)",
+      "Staging upload: pexels-leeloothefirst-7600367.webp (Pexels/Unsplash)"
+    ],
+    "2755": [
+      "Pexels photo 34207369",
+      "Pexels photo 35155421"
+    ],
+    "2754": [
+      "Pexels photo 4508751",
+      "Pexels photo 17489157"
+    ],
+    "2753": [
+      "Pexels photo 16380906",
+      "Pexels photo 20870797"
+    ],
+    "2728": [
+      "Pexels photo 2599244",
+      "Pexels photo 6019019"
+    ],
+    "2724": [
+      "Pexels photo 3520692",
+      "Pexels photo 37052613"
+    ],
+    "2207": [
+      "Pexels photo 8439093",
+      "Pexels photo 8439082"
+    ],
+    "2200": [
+      "Pexels photo 9534649",
+      "Pexels photo 8566526"
     ]
   },
   "site": {
-    "hero": {
-      "src": "/images/site/hero.webp",
-      "pexels": 8728291
-    },
-    "hero-robot": {
-      "src": "/images/site/hero-robot.webp",
-      "pexels": 18799044
-    },
-    "cat-applications": {
-      "src": "/images/site/cat-applications.webp",
-      "pexels": 6248959
-    },
-    "cat-capabilities": {
-      "src": "/images/site/cat-capabilities.webp",
-      "pexels": 8438958
-    },
-    "cat-ai": {
-      "src": "/images/site/cat-ai.webp",
-      "pexels": 8566473
-    },
-    "cat-aitech": {
-      "src": "/images/site/cat-aitech.webp",
-      "pexels": 17489160
-    },
-    "cat-computer-accessories": {
-      "src": "/images/site/cat-computer-accessories.webp",
-      "pexels": 3665442
-    },
-    "cat-apis": {
-      "src": "/images/site/cat-apis.webp",
-      "pexels": 7988086
-    },
-    "cat-digital": {
-      "src": "/images/site/cat-digital.webp",
-      "pexels": 8108651
-    },
-    "cat-robotics": {
-      "src": "/images/site/cat-robotics.webp",
-      "pexels": 34207359
-    },
-    "cat-uncategorized": {
-      "src": "/images/site/cat-uncategorized.webp",
-      "pexels": 5554948
-    },
-    "sell": {
-      "src": "/images/site/sell.webp",
-      "pexels": 35155421
-    },
-    "team": {
-      "src": "/images/site/team.webp",
-      "pexels": 6804068
-    },
-    "team-2": {
-      "src": "/images/site/team-2.webp",
-      "pexels": 8204363
-    },
-    "dashboard": {
-      "src": "/images/site/dashboard.webp",
-      "pexels": 7567595
-    },
-    "datacenter": {
-      "src": "/images/site/datacenter.webp",
-      "pexels": 4508751
-    },
-    "servers": {
-      "src": "/images/site/servers.webp",
-      "pexels": 17489157
-    },
-    "office": {
-      "src": "/images/site/office.webp",
-      "pexels": 7653461
-    },
-    "glass": {
-      "src": "/images/site/glass.webp",
-      "pexels": 5554948
-    },
-    "circuit": {
-      "src": "/images/site/circuit.webp",
-      "pexels": 3520692
-    },
-    "robot-hand": {
-      "src": "/images/site/robot-hand.webp",
-      "pexels": 8386369
-    },
-    "robot-dark": {
-      "src": "/images/site/robot-dark.webp",
-      "pexels": 8294606
-    },
-    "chess": {
-      "src": "/images/site/chess.webp",
-      "pexels": 8438958
-    },
-    "vendor-aiir": {
-      "src": "/images/site/vendor-aiir.webp",
-      "pexels": 6804612
-    },
-    "vendor-rana-sami": {
-      "src": "/images/site/vendor-rana-sami.webp",
-      "pexels": 34207369
-    },
-    "vendor-alexa-2_0": {
-      "src": "/images/site/vendor-alexa-2_0.webp",
-      "pexels": 8982663
-    },
-    "vendor-vielka-norman": {
-      "src": "/images/site/vendor-vielka-norman.webp",
-      "pexels": 8108651
-    },
-    "vendor-vendor_123": {
-      "src": "/images/site/vendor-vendor_123.webp",
-      "pexels": 37052613
-    },
-    "post-ai-in-healthcare-revolutionizing-patient-care": {
-      "src": "/images/site/post-ai-in-healthcare-revolutionizing-patient-care.webp",
-      "pexels": 4226139
-    },
-    "post-the-everyday-impact-of-artificial-intelligence": {
-      "src": "/images/site/post-the-everyday-impact-of-artificial-intelligence.webp",
-      "pexels": 8295025
-    },
-    "post-the-role-of-ai-in-digital-marketing": {
-      "src": "/images/site/post-the-role-of-ai-in-digital-marketing.webp",
-      "pexels": 37685036
-    },
-    "post-the-future-of-ai-opportunities-and-challenges": {
-      "src": "/images/site/post-the-future-of-ai-opportunities-and-challenges.webp",
-      "pexels": 18799044
-    }
+    "hero": "Pexels photo 7567595",
+    "cat-apis": "Pexels photo 7988086",
+    "cat-aitech": "Pexels photo 17489160",
+    "cat-ai": "Pexels photo 8386369",
+    "cat-capabilities": "Pexels photo 8438958",
+    "cat-applications": "Pexels photo 6248959",
+    "cta-holiday": "Staging upload: pexels-picjumbo-com-55570-196655.webp (Pexels/Unsplash)",
+    "cta-gadget": "Staging upload: pexels-pavel-danilyuk-8294564.webp (Pexels/Unsplash)",
+    "about-history": "Staging upload: pexels-tara-winstead-8386426-1.webp (Pexels/Unsplash)",
+    "about-vision": "Staging upload: pexels-cottonbro-6153354.webp (Pexels/Unsplash)"
+  },
+  "blog": {
+    "ai-in-healthcare-revolutionizing-patient-care": "Staging upload: zhenyu-luo-ke0jmtbvxxm-unsplash.webp (Pexels/Unsplash)",
+    "the-everyday-impact-of-artificial-intelligence": "Staging upload: markus-winkler-tgbxihcpkrm-unsplash.webp (Pexels/Unsplash)",
+    "the-role-of-ai-in-digital-marketing": "Pexels photo 37685036",
+    "the-future-of-ai-opportunities-and-challenges": "Staging upload: possessed-photography-jibmsms4-ka-unsplash.webp (Pexels/Unsplash)"
   }
 }

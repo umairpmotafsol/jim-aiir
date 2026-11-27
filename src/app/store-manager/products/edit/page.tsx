@@ -9,10 +9,9 @@ export const metadata: Metadata = { title: "Edit product" };
 
 export default async function EditProductPage() {
   const { items } = await getProducts({ perPage: 500 });
-  const library = [...new Set(items.flatMap((p) => p.images.map((i) => i.src)))];
   return (
     <Suspense fallback={<Skeleton className="h-96" />}>
-      <ProductForm mode="edit" seed={items} categories={categories} library={library} />
+      <ProductForm mode="edit" seed={items} categories={categories} />
     </Suspense>
   );
 }

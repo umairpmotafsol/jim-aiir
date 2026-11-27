@@ -54,19 +54,25 @@ Search the code for `TODO(backend)` to find every integration point.
 
 ## Images
 
-The staging site's media bucket (`aiir-wp-website` on S3) no longer exists, so all product, blog and site imagery was re-sourced
-from Pexels (free licence) and stored as optimised WebP in `public/images/`. Source photo IDs are listed in
-`src/data/image-credits.json`; site images are mapped in `src/lib/images.ts`.
+All imagery is real photography under free licences (Pexels and Unsplash); no AI-generated or rendered images are used.
+Files live in `public/images/` (`products/`, `site/`, `blog/`, plus the AIII logo in `brand/`) as optimised WebP, and each
+image's source is listed in `src/data/image-credits.json`. Site images are mapped in `src/lib/images.ts`; product and post
+images come from the seed data. Anything without an image URL falls back to the neutral placeholder in
+`src/components/ui/placeholder.tsx`. When the backend serves media, replace the URLs and add its host to
+`images.remotePatterns` in `next.config.ts`.
 
 ## Design system
 
-Tokens live in `src/app/globals.css` (`@theme`): cobalt `brand-*` on deep navy, a teal `accent-*`, neutral `ink` / `muted` /
-`line` / `surface`, Inter for body and Plus Jakarta Sans for headings. Shared UI is in `src/components/ui/`
-(buttons, fields, tabs, confirm dialog, page header with photo background, empty states).
+Tokens live in `src/app/globals.css` (`@theme`): a deep teal `brand-*` (primary actions, links), a contrasting orange
+`accent-*` (sale badges, offers, cart count, sale prices) and neutral `ink` / `muted` / `line` / `surface` on white. Inter for body, Plus Jakarta Sans for headings. Pill buttons, rounded cards and light sections;
+the footer is the only dark area. Shared UI is in `src/components/ui/` (buttons, fields, tabs, confirm dialog, breadcrumb bar,
+placeholders, empty states).
 
 ## Before launch
 
-- Page copy on About, FAQ, Terms and Refund pages is placeholder written for AIIR and needs client and legal sign-off.
+- Page copy is carried over from staging as-is. About Us, FAQ, Terms and Contact still contain the Marketo theme's demo text
+  ("We are marketpress", stock team members, FAQ about Bangladesh, `info@example.com`), the homepage promo banners mention a
+  "Mini Two Wheel Self Balancing Scooter", and the Refund page is the WooCommerce sample policy. All of it needs real AIIR copy.
 - Seed products include staging test items (e.g. "uq", "test", "Mouse"); clean these up in the real catalogue.
 - Prices are stored in USD (`NEXT_PUBLIC_CURRENCY`); switching currency also needs the prices converted.
 - Card payments show as "coming soon"; only cash on delivery is enabled, matching staging.

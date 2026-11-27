@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { Media } from "@/components/ui/placeholder";
 import Link from "next/link";
 import { Minus, Plus, ShoppingCart, Trash2 } from "lucide-react";
 import { useCart, computeTotals } from "@/lib/store/cart";
@@ -30,15 +30,13 @@ export function CartView() {
 
   if (!lines.length) {
     return (
-      <EmptyState icon={<ShoppingCart className="size-7" />} title="Your cart is currently empty" action={<LinkButton href="/shop">Return to shop</LinkButton>}>
-        Browse AI tools, APIs and robotics from AIIR vendors.
-      </EmptyState>
+      <EmptyState icon={<ShoppingCart className="size-7" />} title="Your cart is currently empty." action={<LinkButton href="/shop">Return to shop</LinkButton>} />
     );
   }
 
   return (
     <div className="grid items-start gap-8 lg:grid-cols-[1fr_22rem]">
-      <div className="overflow-hidden rounded-2xl border border-line">
+      <div className="overflow-hidden rounded-lg border border-line">
         <table className="w-full text-sm">
           <thead className="hidden bg-surface text-left text-xs uppercase tracking-wider text-muted sm:table-header-group">
             <tr>
@@ -55,7 +53,7 @@ export function CartView() {
                 <td className="row-span-2 sm:px-5 sm:py-4">
                   <div className="flex items-center gap-4">
                     <div className="relative size-16 shrink-0 overflow-hidden rounded-lg bg-surface">
-                      {l.image ? <Image src={l.image} alt="" fill sizes="4rem" className="object-cover" /> : null}
+                      <Media src={l.image} alt="" sizes="4rem" seed={l.name} size="sm" />
                     </div>
                     <Link href={`/product/${l.slug}`} className="hidden font-semibold hover:text-brand-700 sm:block">
                       {l.name}
@@ -112,7 +110,7 @@ export function CartView() {
         </table>
       </div>
 
-      <aside className="space-y-6 rounded-2xl border border-line p-6" aria-label="Cart totals">
+      <aside className="space-y-6 rounded-lg border border-line p-6" aria-label="Cart totals">
         <h2 className="text-lg font-bold">Cart totals</h2>
         <CouponForm />
         <ShippingOptions totals={totals} />

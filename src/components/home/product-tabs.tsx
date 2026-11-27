@@ -1,38 +1,58 @@
 "use client";
 
-import { useState } from "react";
-import { ProductGrid } from "@/components/product/product-card";
+import { useId, useState, type KeyboardEvent, type ReactNode } from "react";
 import { cn } from "@/lib/format";
-import type { Product, Vendor } from "@/lib/types";
 
-type Tab = { id: string; label: string; products: Product[] };
+type Tab = { id: string; label: string; content: ReactNode };
 
-export function ProductTabs({ tabs, vendors }: { tabs: Tab[]; vendors: Vendor[] }) {
+/** Section title with pill tabs; panels can be server-rendered. */
+export function SectionTabs({ title, eyebrow, tabs }: { title: string; eyebrow?: string; tabs: Tab[] }) {
   const [active, setActive] = useState(tabs[0]?.id);
+  const base = useId();
   const current = tabs.find((t) => t.id === active) ?? tabs[0];
+
+  const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    const i = tabs.findIndex((t) => t.id === current.id);
+    const next = e.key === "ArrowRight" ? i + 1 : e.key === "ArrowLeft" ? i - 1 : null;
+    if (next === null) return;
+    e.preventDefault();
+    const tab = tabs[(next + tabs.length) % tabs.length];
+    setActive(tab.id);
+    document.getElementById(`${base}-tab-${tab.id}`)?.focus();
+  };
 
   return (
     <div>
-      <div role="tablist" aria-label="Featured products" className="mb-8 inline-flex flex-wrap gap-1 rounded-2xl border border-line bg-white p-1.5 shadow-card">
-        {tabs.map((t) => (
-          <button
-            key={t.id}
-            role="tab"
-            id={`tab-${t.id}`}
-            aria-selected={t.id === current.id}
-            aria-controls={`panel-${t.id}`}
-            onClick={() => setActive(t.id)}
-            className={cn(
-              "rounded-xl px-5 py-2.5 text-sm font-semibold transition-all",
-              t.id === current.id ? "bg-brand-600 text-white shadow-md" : "text-slate-600 hover:bg-brand-50 hover:text-brand-700",
-            )}
-          >
-            {t.label}
-          </button>
-        ))}
+      <div className="mb-8 flex flex-wrap items-end justify-between gap-5">
+        <div>
+          {eyebrow ? <p className="eyebrow mb-2">{eyebrow}</p> : null}
+          <h2 className="text-3xl font-bold tracking-tight">{title}</h2>
+        </div>
+        <div role="tablist" aria-label={title} className="flex flex-wrap gap-2" onKeyDown={onKeyDown}>
+          {tabs.map((t) => {
+            const selected = t.id === current.id;
+            return (
+              <button
+                key={t.id}
+                role="tab"
+                id={`${base}-tab-${t.id}`}
+                aria-selected={selected}
+                aria-controls={`${base}-panel-${t.id}`}
+                tabIndex={selected ? 0 : -1}
+                onClick={() => setActive(t.id)}
+                className={cn(
+                  "rounded-md px-4 py-2 text-sm font-medium transition-colors",
+                  selected ? "bg-ink text-white" : "bg-surface text-slate-600 hover:bg-brand-50 hover:text-brand-700",
+                )}
+              >
+                {t.label}
+              </button>
+            );
+          })}
+        </div>
       </div>
-      <div role="tabpanel" id={`panel-${current.id}`} aria-labelledby={`tab-${current.id}`}>
-        <ProductGrid products={current.products} vendors={vendors} />
+      <div role="tabpanel" id={`${base}-panel-${current.id}`} aria-labelledby={`${base}-tab-${current.id}`} key={current.id} className="animate-fade-up">
+        {current.content}
       </div>
     </div>
   );

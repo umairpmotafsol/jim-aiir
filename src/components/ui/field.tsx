@@ -2,7 +2,7 @@ import { useId, type ComponentProps, type ReactNode } from "react";
 import { cn } from "@/lib/format";
 
 const control =
-  "block w-full rounded-xl border bg-white px-4 text-sm text-ink placeholder:text-slate-400 transition-all focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100 disabled:bg-slate-50";
+  "block w-full rounded-md border bg-white px-4 text-sm text-ink placeholder:text-slate-400 transition-all focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100 disabled:bg-slate-50";
 
 function controlClass(error?: string, extra?: string) {
   return cn(control, error ? "border-red-400" : "border-line", extra);

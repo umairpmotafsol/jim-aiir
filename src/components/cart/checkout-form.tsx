@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { Media } from "@/components/ui/placeholder";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
@@ -209,14 +209,14 @@ export function CheckoutForm() {
         ) : null}
       </div>
 
-      <aside className="space-y-6 rounded-2xl border border-line p-6 lg:sticky lg:top-40" aria-label="Your order">
+      <aside className="space-y-6 rounded-lg border border-line p-6 lg:sticky lg:top-40" aria-label="Your order">
         <h2 className="text-lg font-bold">Your order</h2>
         <ul className="divide-y divide-line">
           {lines.map((l) => (
             <li key={l.productId} className="flex items-center gap-3 py-3 text-sm">
               <div className="relative size-12 shrink-0 overflow-hidden rounded-lg bg-surface">
-                {l.image ? <Image src={l.image} alt="" fill sizes="3rem" className="object-cover" /> : null}
-                <span className="absolute -right-1 -top-1 grid size-5 place-items-center rounded-full bg-slate-700 text-[10px] font-bold text-white">{l.quantity}</span>
+                <Media src={l.image} alt="" sizes="3rem" seed={l.name} size="sm" />
+                <span className="absolute -right-1 -top-1 grid size-5 place-items-center rounded-md bg-slate-700 text-[10px] font-bold text-white">{l.quantity}</span>
               </div>
               <span className="flex-1 font-medium">{l.name}</span>
               <span className="font-semibold">{formatMoney(l.price * l.quantity)}</span>

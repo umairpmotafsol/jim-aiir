@@ -21,12 +21,12 @@ export function NewsletterForm({ tone = "light" }: { tone?: "light" | "dark" }) 
           name="email"
           type="email"
           autoComplete="email"
-          placeholder="you@example.com"
+          placeholder="Enter Your Mail Here"
           defaultValue={state.status === "error" ? state.values?.email : ""}
           key={state.status === "success" ? "reset" : "keep"}
           aria-invalid={state.status === "error"}
           className={cn(
-            "h-12 min-w-0 flex-1 rounded-xl border px-4 text-sm focus:outline-none focus:ring-2",
+            "h-12 min-w-0 flex-1 rounded-md border px-4 text-sm focus:outline-none focus:ring-2",
             dark
               ? "border-white/20 bg-white/10 text-white placeholder:text-brand-300 focus:ring-accent-400"
               : "border-line bg-white focus:border-brand-500 focus:ring-brand-200",
@@ -35,9 +35,9 @@ export function NewsletterForm({ tone = "light" }: { tone?: "light" | "dark" }) 
         <button
           type="submit"
           disabled={pending}
-          className="h-12 rounded-xl bg-accent-500 px-6 text-sm font-bold text-brand-950 hover:bg-accent-400 disabled:opacity-60"
+          className="h-12 rounded-md bg-brand-600 px-6 text-sm font-bold text-white hover:bg-brand-700 disabled:opacity-60"
         >
-          {pending ? "Subscribing…" : "Subscribe"}
+          {pending ? "Submitting…" : "Submit"}
         </button>
       </div>
       {state.message ? (

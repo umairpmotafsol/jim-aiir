@@ -11,11 +11,11 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   /** Only production should be indexed by search engines. */
   indexable: process.env.NEXT_PUBLIC_SITE_ENV === "production",
-  email: "hello@aiir.ie",
+  address: "17 Princess Road, London, Greater London",
   social: {
     facebook: "https://www.facebook.com/aiawardsirl/",
     x: "https://x.com/AIAwardsIrl",
-    instagram: "https://www.instagram.com/aiawardsirl/",
+    instagram: "https://www.instagram.com/aiawardsirl/?hl=en",
   },
 };
 
@@ -40,21 +40,40 @@ export const commerce = {
   } as Record<string, { type: "percent" | "fixed"; amount: number }>,
 };
 
-export const mainNav = [
+/** Main menu, as on the WordPress site. */
+export const mainNav: { label: string; href: string; children?: { label: string; href: string }[] }[] = [
   { label: "Home", href: "/" },
-  { label: "Shop", href: "/shop" },
-  { label: "Blog", href: "/blog" },
   {
-    label: "About",
+    label: "About Us",
     href: "/about-us",
     children: [
-      { label: "About us", href: "/about-us" },
       { label: "Contact", href: "/contact" },
       { label: "FAQ", href: "/faq" },
-      { label: "Terms and conditions", href: "/terms-and-conditions" },
+      { label: "Terms and Conditions", href: "/terms-and-conditions" },
     ],
   },
-  { label: "Sell on AIIR", href: "/vendor-register" },
+  { label: "Shop", href: "/shop" },
+  { label: "Blog", href: "/blog" },
+];
+
+/** The "All Categories" menu, in the order the WordPress site shows it. */
+export const categoryMenu = [
+  { label: "Machine Learning", href: "/product-category/aitech/machine-learning" },
+  { label: "Digital", href: "/product-category/applications/digital" },
+  { label: "AI Functions", href: "/product-category/ai" },
+  { label: "Robotics", href: "/product-category/aitech/robotics" },
+  { label: "AI Capabilities", href: "/product-category/capabilities" },
+  { label: "AI Applications", href: "/product-category/applications" },
+  { label: "AI", href: "/product-category/applications/ai-applications" },
+];
+
+/** Footer "Categories" column. */
+export const footerCategories = [
+  { label: "Development/APIs", href: "/product-category/apis" },
+  { label: "AI Tech", href: "/product-category/aitech" },
+  { label: "AI Functions", href: "/product-category/ai" },
+  { label: "AI Applications", href: "/product-category/applications" },
+  { label: "AI Capabilities", href: "/product-category/capabilities" },
 ];
 
 export const countries = [

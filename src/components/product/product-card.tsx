@@ -1,89 +1,117 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Price, Rating } from "@/components/ui/misc";
 import { LinkButton } from "@/components/ui/button";
+import { Media } from "@/components/ui/placeholder";
 import { AddToCartButton, CompareButton, WishlistButton } from "./product-actions";
-import { discountPercent } from "@/lib/format";
+import { cn } from "@/lib/format";
 import type { Product, Vendor } from "@/lib/types";
 
-type Props = { product: Product; vendor?: Vendor | null; layout?: "grid" | "list"; priority?: boolean };
+type Props = {
+  product: Product;
+  vendor?: Vendor | null;
+  layout?: "grid" | "list";
+  priority?: boolean;
+};
 
+function Cta({ product, compact }: { product: Product; compact?: boolean }) {
+  if (product.purchasable) return <AddToCartButton product={product} compact={compact} className={compact ? "size-10 shrink-0 px-0" : undefined} />;
+  return (
+    <LinkButton href={`/product/${product.slug}`} variant="outline" size="sm">
+      {product.type === "grouped" ? "View products" : "Read more"}
+    </LinkButton>
+  );
+}
+
+function SaleBadge() {
+  return <span className="absolute left-3 top-3 rounded-md bg-accent-500 px-2.5 py-1 text-[11px] font-bold text-ink">Sale!</span>;
+}
+
+/** Clean product card: image, store, title, rating, price and one action. */
 export function ProductCard({ product, vendor, layout = "grid", priority }: Props) {
   const image = product.images[0];
   const href = `/product/${product.slug}`;
-  const off = product.onSale ? discountPercent(product.regularPrice, product.price) : 0;
-  const isList = layout === "list";
 
-  const cta = product.purchasable ? (
-    <AddToCartButton product={product} />
-  ) : (
-    <LinkButton href={href} variant="outline" size="sm">
-      {product.type === "grouped" ? "View products" : "View details"}
-    </LinkButton>
-  );
+  if (layout === "list") {
+    return (
+      <article className="grid grid-cols-[7rem_1fr] gap-5 rounded-lg border border-line bg-white p-3 transition-colors hover:border-slate-300 sm:grid-cols-[11rem_1fr]">
+        <Link href={href} tabIndex={-1} aria-hidden className="relative aspect-square overflow-hidden rounded-lg">
+          <Media src={image?.thumb} alt="" sizes="11rem" seed={product.name} />
+          {product.onSale ? <SaleBadge /> : null}
+        </Link>
+        <div className="flex flex-col gap-2 py-1 pr-2">
+          {vendor ? <StoreLine vendor={vendor} /> : null}
+          <h3 className="text-base font-semibold">
+            <Link href={href} className="hover:text-brand-700">
+              {product.name}
+            </Link>
+          </h3>
+          {product.description[0] ? <p className="line-clamp-2 text-sm text-muted">{product.description[0]}</p> : null}
+          <Price price={product.price} regularPrice={product.regularPrice} onSale={product.onSale} />
+          <div className="mt-auto flex flex-wrap items-center gap-3 pt-1">
+            <Cta product={product} />
+            <WishlistButton productId={product.id} name={product.name} />
+            <CompareButton productId={product.id} name={product.name} />
+          </div>
+        </div>
+      </article>
+    );
+  }
 
   return (
-    <article
-      className={
-        isList
-          ? "group grid grid-cols-[8rem_1fr] gap-4 rounded-2xl border border-line bg-white p-3 shadow-card transition-all duration-300 hover:border-brand-200 hover:shadow-lift sm:grid-cols-[13rem_1fr] sm:gap-6"
-          : "group flex flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-lift"
-      }
-    >
-      <div className={isList ? "relative aspect-square overflow-hidden rounded-xl bg-surface" : "relative m-2 mb-0 aspect-[5/4] overflow-hidden rounded-xl bg-surface"}>
+    <article className="group relative flex flex-col overflow-hidden rounded-lg border border-line bg-white transition-colors hover:border-slate-300">
+      <div className="relative aspect-[4/3] overflow-hidden border-b border-line">
         <Link href={href} tabIndex={-1} aria-hidden>
-          {image ? (
-            <Image
-              src={image.src}
-              alt=""
-              fill
-              priority={priority}
-              sizes={isList ? "(min-width: 640px) 12rem, 8rem" : "(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"}
-              className="object-cover transition-transform duration-500 group-hover:scale-[1.06]"
-            />
-          ) : null}
+          <Media src={image?.thumb} alt="" priority={priority} sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" seed={product.name} />
         </Link>
-        {off > 0 ? (
-          <span className="absolute left-3 top-3 rounded-full bg-rose-600 px-2.5 py-1 text-xs font-bold text-white shadow-sm">-{off}%</span>
-        ) : null}
-        {!isList ? (
-          <div className="absolute right-3 top-3 flex flex-col gap-2 transition-all duration-300 sm:translate-x-2 sm:opacity-0 sm:group-hover:translate-x-0 sm:group-hover:opacity-100 sm:group-focus-within:translate-x-0 sm:group-focus-within:opacity-100">
-            <WishlistButton productId={product.id} name={product.name} className="rounded-full bg-white/95 p-2 shadow-md backdrop-blur" />
-            <CompareButton productId={product.id} name={product.name} className="rounded-full bg-white/95 p-2 shadow-md backdrop-blur" />
-          </div>
-        ) : null}
+        {product.onSale ? <SaleBadge /> : null}
+        <div className="absolute right-3 top-3 flex flex-col gap-2 transition-opacity duration-200 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100">
+          <WishlistButton productId={product.id} name={product.name} className="rounded-md bg-white p-2 shadow-md" />
+          <CompareButton productId={product.id} name={product.name} className="rounded-md bg-white p-2 shadow-md" />
+        </div>
       </div>
-
-      <div className={isList ? "flex flex-col py-1 pr-2" : "flex flex-1 flex-col p-4"}>
-        {vendor ? (
-          <Link href={`/store/${vendor.slug}`} className="mb-1.5 text-xs font-semibold uppercase tracking-wider text-brand-600 hover:underline">
-            {vendor.name}
-          </Link>
-        ) : (
-          <span className="mb-1.5 text-xs font-semibold uppercase tracking-wider text-slate-400">Sold by AIIR</span>
-        )}
-        <h3 className="text-[15px] font-bold leading-snug">
+      <div className="flex flex-1 flex-col gap-1.5 p-4">
+        {vendor ? <StoreLine vendor={vendor} /> : null}
+        <h3 className="font-semibold leading-snug">
           <Link href={href} className="hover:text-brand-700">
             {product.name}
           </Link>
         </h3>
-        {product.reviewCount > 0 ? <Rating value={product.rating} count={product.reviewCount} className="mt-1.5" /> : null}
-        {isList && product.description[0] ? (
-          <p className="mt-2 line-clamp-2 text-sm text-muted">{product.description[0]}</p>
-        ) : null}
-        <div className="min-h-4 flex-1" aria-hidden />
-        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line/70 pt-3.5">
+        {product.reviewCount ? <Rating value={product.rating} count={product.reviewCount} /> : null}
+        <div className="mt-auto flex items-center justify-between gap-3 pt-3">
           <Price price={product.price} regularPrice={product.regularPrice} onSale={product.onSale} />
-          <div className="flex items-center gap-3">
-            {isList ? (
-              <>
-                <WishlistButton productId={product.id} name={product.name} />
-                <CompareButton productId={product.id} name={product.name} />
-              </>
-            ) : null}
-            {cta}
-          </div>
+          <Cta product={product} compact />
         </div>
+      </div>
+    </article>
+  );
+}
+
+function StoreLine({ vendor }: { vendor: Vendor }) {
+  return (
+    <p className="text-xs text-muted">
+      Store:{" "}
+      <Link href={`/store/${vendor.slug}`} className="font-medium text-brand-700 hover:underline">
+        {vendor.name}
+      </Link>
+    </p>
+  );
+}
+
+/** Compact horizontal card (deals, small lists). */
+export function MiniProductCard({ product, className }: { product: Product; className?: string }) {
+  const href = `/product/${product.slug}`;
+  return (
+    <article className={cn("flex items-center gap-4 rounded-lg border border-line bg-white p-3 transition-shadow hover:shadow-card", className)}>
+      <Link href={href} tabIndex={-1} aria-hidden className="relative size-16 shrink-0 overflow-hidden rounded-md">
+        <Media src={product.images[0]?.thumb} alt="" sizes="4rem" seed={product.name} size="sm" />
+      </Link>
+      <div className="min-w-0">
+        <h3 className="truncate text-sm font-semibold">
+          <Link href={href} className="hover:text-brand-700">
+            {product.name}
+          </Link>
+        </h3>
+        <Price price={product.price} regularPrice={product.regularPrice} onSale={product.onSale} className="mt-0.5 text-sm" />
       </div>
     </article>
   );

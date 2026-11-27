@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
+import { Media } from "@/components/ui/placeholder";
 import Link from "next/link";
 import { useState } from "react";
-import { ImageOff, Package, Pencil, PlusCircle, Search, Trash2 } from "lucide-react";
+import { Package, Pencil, PlusCircle, Search, Trash2 } from "lucide-react";
 import { useCurrentUser } from "@/lib/store/auth";
 import { useVendorProducts, type VendorProductDraft } from "@/lib/store/vendor-products";
 import { toast } from "@/lib/store/toast";
@@ -56,10 +56,10 @@ export function ProductsList({ seed, categories }: { seed: Product[]; categories
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search your products"
-                className="h-10 w-full rounded-xl border border-line bg-surface pl-10 pr-3 text-sm focus:border-brand-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-100"
+                className="h-10 w-full rounded-md border border-line bg-surface pl-10 pr-3 text-sm focus:border-brand-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-100"
               />
             </label>
-            <div className="flex gap-1 rounded-xl bg-surface p-1" role="group" aria-label="Filter by status">
+            <div className="flex gap-1 rounded-md bg-surface p-1" role="group" aria-label="Filter by status">
               {(["all", "published", "draft"] as const).map((s) => (
                 <button
                   key={s}
@@ -89,8 +89,8 @@ export function ProductsList({ seed, categories }: { seed: Product[]; categories
                   <tr key={p.id} className="hover:bg-surface/60">
                     <td className="px-5 py-3">
                       <div className="flex items-center gap-4">
-                        <span className="relative grid size-14 shrink-0 place-items-center overflow-hidden rounded-xl bg-surface text-slate-300">
-                          {p.image ? <Image src={p.image} alt="" fill sizes="3.5rem" className="object-cover" /> : <ImageOff className="size-5" aria-hidden />}
+                        <span className="relative grid size-14 shrink-0 place-items-center overflow-hidden rounded-md bg-surface text-slate-300">
+                          <Media src={p.image} alt="" sizes="3.5rem" seed={p.name} size="sm" />
                         </span>
                         <div className="min-w-0">
                           <p className="font-semibold">{p.name}</p>
@@ -99,7 +99,7 @@ export function ProductsList({ seed, categories }: { seed: Product[]; categories
                       </div>
                     </td>
                     <td className="px-5 py-3">
-                      <span className={cn("rounded-full px-2.5 py-1 text-xs font-semibold capitalize", statusStyle[p.status])}>{p.status}</span>
+                      <span className={cn("rounded-md px-2.5 py-1 text-xs font-semibold capitalize", statusStyle[p.status])}>{p.status}</span>
                     </td>
                     <td className="px-5 py-3">
                       {p.salePrice !== null ? (

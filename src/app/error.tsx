@@ -12,8 +12,8 @@ export default function ErrorPage({ error, retry }: { error: Error & { digest?: 
   }, [error]);
 
   return (
-    <section className="bg-dots container-page flex flex-col items-center py-24 text-center">
-      <div className="grid size-16 place-items-center rounded-2xl bg-red-50 text-red-600">
+    <section className="container-page flex flex-col items-center py-24 text-center">
+      <div className="grid size-16 place-items-center rounded-lg bg-red-50 text-red-600">
         <TriangleAlert className="size-8" aria-hidden />
       </div>
       <h1 className="mt-6 text-3xl font-extrabold sm:text-4xl">Something went wrong</h1>
@@ -25,7 +25,7 @@ export default function ErrorPage({ error, retry }: { error: Error & { digest?: 
         <Button onClick={retry}>
           <RotateCcw className="size-4" aria-hidden /> Try again
         </Button>
-        <Link href="/" className="inline-flex h-11 items-center rounded-xl border border-line px-5 text-sm font-semibold hover:border-brand-400">
+        <Link href="/" className="inline-flex h-11 items-center rounded-md border border-line px-5 text-sm font-semibold hover:border-brand-400">
           Go home
         </Link>
       </div>

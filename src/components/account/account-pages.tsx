@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
-import { ClipboardList, Heart, MapPin, User } from "lucide-react";
+import { ClipboardList } from "lucide-react";
 import { useAuth, useCurrentUser, type Address } from "@/lib/store/auth";
 import { orderStatusLabel, useOrders } from "@/lib/store/orders";
-import { useWishlist } from "@/lib/store/lists";
 import { addressSchema, email as emailSchema, fieldErrors, password as passwordSchema } from "@/lib/validation";
 import { commerce, countries } from "@/lib/config";
 import { Input, Select } from "@/components/ui/field";
@@ -21,33 +21,41 @@ function useMyOrders() {
 
 export function AccountDashboard() {
   const user = useCurrentUser();
-  const orders = useMyOrders();
-  const wishlist = useWishlist((s) => s.ids.length);
+  const logout = useAuth((s) => s.logout);
+  const router = useRouter();
   if (!user) return null;
-  const cards = [
-    { href: "/my-account/orders", label: "Orders", value: orders.length, icon: ClipboardList },
-    { href: "/wishlist", label: "Wishlist items", value: wishlist, icon: Heart },
-    { href: "/my-account/addresses", label: "Saved addresses", value: [user.billing, user.shipping].filter(Boolean).length, icon: MapPin },
-    { href: "/my-account/edit-account", label: "Account details", value: "Edit", icon: User },
-  ];
+  const links = "font-semibold text-brand-700 hover:underline";
   return (
-    <div className="space-y-8">
-      <div>
-        <h2 className="text-2xl font-bold">Hello, {user.displayName}</h2>
-        <p className="mt-1 text-muted">
-          From your account dashboard you can view recent orders, manage your addresses and edit your password and account details.
-        </p>
-      </div>
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {cards.map(({ href, label, value, icon: Icon }) => (
-          <Link key={href} href={href} className="rounded-2xl border border-line p-5 hover:border-brand-300 hover:shadow-sm">
-            <Icon className="size-6 text-brand-600" aria-hidden />
-            <p className="mt-3 font-display text-2xl font-bold">{value}</p>
-            <p className="text-sm text-muted">{label}</p>
-          </Link>
-        ))}
-      </div>
-      {orders.length ? <OrdersTable limit={3} /> : null}
+    <div className="space-y-4 leading-7 text-slate-700">
+      <p>
+        Hello <strong className="text-ink">{user.displayName}</strong> (not <strong className="text-ink">{user.displayName}</strong>?{" "}
+        <button
+          type="button"
+          className={links}
+          onClick={() => {
+            logout();
+            router.push("/my-account");
+          }}
+        >
+          Log out
+        </button>
+        )
+      </p>
+      <p>
+        From your account dashboard you can view your{" "}
+        <Link href="/my-account/orders" className={links}>
+          recent orders
+        </Link>
+        , manage your{" "}
+        <Link href="/my-account/addresses" className={links}>
+          shipping and billing addresses
+        </Link>
+        , and{" "}
+        <Link href="/my-account/edit-account" className={links}>
+          edit your password and account details
+        </Link>
+        .
+      </p>
     </div>
   );
 }
@@ -58,14 +66,12 @@ export function OrdersTable({ limit }: { limit?: number }) {
 
   if (!orders.length) {
     return (
-      <EmptyState icon={<ClipboardList className="size-7" />} title="No orders yet" action={<LinkButton href="/shop">Browse products</LinkButton>}>
-        When you place an order it will appear here.
-      </EmptyState>
+      <EmptyState icon={<ClipboardList className="size-7" />} title="No order has been made yet." action={<LinkButton href="/shop">Browse products</LinkButton>} />
     );
   }
 
   return (
-    <div className="overflow-x-auto rounded-2xl border border-line">
+    <div className="overflow-x-auto rounded-lg border border-line">
       <table className="w-full min-w-[36rem] text-sm">
         <thead className="bg-surface text-left text-xs uppercase tracking-wider text-muted">
           <tr>
@@ -82,7 +88,7 @@ export function OrdersTable({ limit }: { limit?: number }) {
               <td className="px-5 py-3 font-semibold">#{o.number}</td>
               <td className="px-5 py-3">{formatDate(o.createdAt)}</td>
               <td className="px-5 py-3">
-                <span className="rounded-full bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-700">{orderStatusLabel[o.status]}</span>
+                <span className="rounded-md bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-700">{orderStatusLabel[o.status]}</span>
               </td>
               <td className="px-5 py-3">
                 {formatMoney(o.total)} for {o.lines.reduce((n, l) => n + l.quantity, 0)} item(s)
@@ -153,7 +159,7 @@ export function Addresses() {
         {(["billing", "shipping"] as const).map((kind) => {
           const a = user[kind];
           return (
-            <section key={kind} className="rounded-2xl border border-line p-6">
+            <section key={kind} className="rounded-lg border border-line p-6">
               <div className="mb-4 flex items-center justify-between">
                 <h2 className="text-lg font-bold capitalize">{kind} address</h2>
                 {editing !== kind ? (
@@ -238,7 +244,7 @@ export function EditAccount() {
       </div>
       <Input label="Display name" name="displayName" required defaultValue={user.displayName} error={errors.displayName} hint="How your name appears in reviews and the account area." />
       <Input label="Email address" name="email" type="email" required defaultValue={user.email} error={errors.email} autoComplete="email" />
-      <fieldset className="space-y-4 rounded-2xl border border-line p-5">
+      <fieldset className="space-y-4 rounded-lg border border-line p-5">
         <legend className="px-1 text-sm font-semibold">Password change</legend>
         <Input label="Current password" name="currentPassword" type="password" autoComplete="current-password" error={errors.currentPassword} hint="Leave blank to keep your password." />
         <Input label="New password" name="newPassword" type="password" autoComplete="new-password" error={errors.newPassword} />

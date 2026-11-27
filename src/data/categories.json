@@ -52,5 +52,17 @@
     "slug": "uncategorized",
     "name": "Uncategorized",
     "parent": null
+  },
+  {
+    "id": 118,
+    "slug": "machine-learning",
+    "name": "Machine Learning",
+    "parent": "aitech"
+  },
+  {
+    "id": 119,
+    "slug": "ai-applications",
+    "name": "AI",
+    "parent": "applications"
   }
 ]

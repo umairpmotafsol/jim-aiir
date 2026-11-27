@@ -35,10 +35,10 @@ export function ConfirmDialog({
       onClose={onClose}
       onClick={(e) => e.target === ref.current && onClose()}
       aria-labelledby="confirm-title"
-      className="m-auto w-[min(28rem,calc(100vw-2rem))] rounded-3xl p-0 shadow-2xl backdrop:bg-brand-950/60 backdrop:backdrop-blur-sm"
+      className="m-auto w-[min(28rem,calc(100vw-2rem))] rounded-lg p-0 shadow-2xl backdrop:bg-ink/50 backdrop:backdrop-blur-sm"
     >
       <div className="p-7">
-        <div className="grid size-12 place-items-center rounded-2xl bg-red-50 text-red-600">
+        <div className="grid size-12 place-items-center rounded-lg bg-red-50 text-red-600">
           <TriangleAlert className="size-6" aria-hidden />
         </div>
         <h2 id="confirm-title" className="mt-5 text-xl font-bold">

@@ -4,31 +4,35 @@
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-jakarta), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
-  /* AIIR brand: confident cobalt on deep navy, with a restrained teal accent. */
-  --color-brand-50: #eef4ff;
-  --color-brand-100: #dbe6fe;
-  --color-brand-200: #bfd3fe;
-  --color-brand-300: #93b4fd;
-  --color-brand-400: #608bfa;
-  --color-brand-500: #3b66f5;
-  --color-brand-600: #2549e6;
-  --color-brand-700: #1d38cc;
-  --color-brand-800: #1c2f9f;
-  --color-brand-900: #0f1d4a;
-  --color-brand-950: #070f2b;
+  /* AIIR brand: a deep teal primary (600+ passes WCAG AA with white text)
+     and a warm orange accent for offers, badges and highlights. */
+  --color-brand-50: #effcf9;
+  --color-brand-100: #d2f5ee;
+  --color-brand-200: #a6e9dc;
+  --color-brand-300: #6fd5c4;
+  --color-brand-400: #38b9a6;
+  --color-brand-500: #1a9c8a;
+  --color-brand-600: #0f7d6f;
+  --color-brand-700: #0c665b;
+  --color-brand-800: #0d5249;
+  --color-brand-900: #0e443d;
+  --color-brand-950: #042a26;
 
-  --color-accent-300: #5eead4;
-  --color-accent-400: #2dd4bf;
-  --color-accent-500: #14b8a6;
-  --color-accent-600: #0d9488;
+  --color-accent-50: #fff7ed;
+  --color-accent-100: #ffedd5;
+  --color-accent-300: #fdba74;
+  --color-accent-400: #fb923c;
+  --color-accent-500: #f97316;
+  --color-accent-600: #ea580c;
+  --color-accent-700: #c2410c;
 
-  --color-ink: #0b1220;
-  --color-muted: #5b6475;
-  --color-line: #e4e7ee;
-  --color-surface: #f5f7fb;
+  --color-ink: #0f172a;
+  --color-muted: #64748b;
+  --color-line: #e8eaf1;
+  --color-surface: #f7f8fc;
 
-  --shadow-card: 0 1px 2px rgb(15 29 74 / 0.04), 0 4px 16px -4px rgb(15 29 74 / 0.08);
-  --shadow-lift: 0 2px 4px rgb(15 29 74 / 0.04), 0 18px 40px -12px rgb(15 29 74 / 0.22);
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 4px 16px -6px rgb(15 23 42 / 0.08);
+  --shadow-lift: 0 2px 4px rgb(15 23 42 / 0.04), 0 18px 40px -14px rgb(15 23 42 / 0.18);
 
   --animate-fade-up: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
   @keyframes fade-up {
@@ -74,10 +78,13 @@
     @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-brand-600;
   }
   .card {
-    @apply rounded-2xl border border-line bg-white shadow-card;
+    @apply rounded-lg border border-line bg-white shadow-card;
   }
   .text-gradient {
-    @apply bg-gradient-to-r from-brand-300 via-white to-accent-300 bg-clip-text text-transparent;
+    background-image: linear-gradient(90deg, var(--color-brand-600), var(--color-accent-500));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
   .bg-grid {
     background-image:
@@ -86,7 +93,7 @@
     background-size: 48px 48px;
   }
   .bg-dots {
-    background-image: radial-gradient(rgb(37 73 230 / 0.12) 1px, transparent 1px);
+    background-image: radial-gradient(rgb(15 125 111 / 0.14) 1px, transparent 1px);
     background-size: 22px 22px;
   }
   .prose-aiir p {

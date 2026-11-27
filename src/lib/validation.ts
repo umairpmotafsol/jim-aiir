@@ -59,16 +59,7 @@ export const loginSchema = z.object({
   password: z.string().min(1, "Password is required."),
 });
 
-export const registerSchema = z
-  .object({
-    firstName: z.string().trim().min(1, "First name is required.").max(60),
-    lastName: z.string().trim().min(1, "Last name is required.").max(60),
-    email,
-    password,
-    confirmPassword: z.string().min(1, "Please confirm your password."),
-    terms: z.literal(true, { message: "Please accept the terms to create an account." }),
-  })
-  .refine((v) => v.password === v.confirmPassword, { path: ["confirmPassword"], message: "Passwords don't match." });
+export const registerSchema = z.object({ email, password });
 
 export const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required.").max(100),
@@ -84,6 +75,13 @@ export const reviewSchema = z.object({
   email,
   rating: z.coerce.number().int().min(1, "Please select a rating.").max(5, "Please select a rating."),
   review: z.string().trim().min(5, "Please write a short review."),
+});
+
+export const commentSchema = z.object({
+  comment: z.string().trim().min(2, "Please type your comment.").max(5000),
+  name: z.string().trim().min(1, "Name is required.").max(100),
+  email,
+  website: z.union([z.literal(""), z.string().trim().url("Please enter a valid URL.")]),
 });
 
 export const inquirySchema = z.object({
@@ -110,10 +108,10 @@ export const vendorRegisterSchema = z
     county: z.string().trim().optional(),
     postcode: z.string().trim().min(1, "Postcode is required."),
     phone,
-    expertise: z.string().trim().min(2, "Tell us what you build or sell."),
+    aiir: z.string().trim().min(1, "AIIR is required."),
     password,
     confirmPassword: z.string(),
-    terms: z.literal(true, { message: "You must accept the vendor terms." }),
+    terms: z.literal(true, { message: "Please agree to the Terms & Conditions." }),
   })
   .refine((v) => v.password === v.confirmPassword, {
     path: ["confirmPassword"],

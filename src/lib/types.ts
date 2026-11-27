@@ -39,12 +39,11 @@ export type CategoryNode = Category & { count: number; children: CategoryNode[] 
 export type Vendor = {
   slug: string;
   name: string;
-  city: string;
-  country: string;
-  about: string;
-  policies: { shipping: string; refund: string; cancellation: string };
+  email: string;
+  /** Store address as entered by the vendor; empty when not set. */
+  address: string;
+  phone: string;
   rating: number;
-  joined: string;
 };
 
 export type Review = {
@@ -63,6 +62,8 @@ export type Post = {
   excerpt: string;
   content: string[];
   image: string | null;
+  category: string;
+  comments: { author: string; date: string; text: string }[];
 };
 
 export type SortKey = "default" | "popularity" | "rating" | "date" | "price" | "price-desc";

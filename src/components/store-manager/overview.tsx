@@ -1,6 +1,7 @@
 "use client";
 
-import Image from "next/image";
+
+import { Media } from "@/components/ui/placeholder";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ArrowRight, ClipboardList, DollarSign, Package, PlusCircle, TrendingUp } from "lucide-react";
@@ -9,7 +10,6 @@ import { orderStatusLabel } from "@/lib/store/orders";
 import { LinkButton } from "@/components/ui/button";
 import { Notice } from "@/components/ui/misc";
 import { formatDate, formatMoney } from "@/lib/format";
-import { images } from "@/lib/images";
 import type { Product } from "@/lib/types";
 import { useVendorCatalog, useVendorOrders } from "./use-vendor-catalog";
 
@@ -26,22 +26,20 @@ export function StoreOverview({ seed }: { seed: Product[] }) {
   for (const o of orders) for (const l of o.vendorLines) unitsSold.set(l.productId, (unitsSold.get(l.productId) ?? 0) + l.quantity);
 
   const kpis = [
-    { label: "Revenue", value: formatMoney(revenue), icon: DollarSign, tone: "from-brand-600 to-brand-500" },
-    { label: "Orders", value: orders.length, icon: ClipboardList, tone: "from-accent-600 to-accent-500" },
-    { label: "Awaiting fulfilment", value: open, icon: TrendingUp, tone: "from-amber-500 to-orange-500" },
-    { label: "Products", value: products.length, icon: Package, tone: "from-violet-600 to-fuchsia-500" },
+    { label: "Revenue", value: formatMoney(revenue), icon: DollarSign },
+    { label: "Orders", value: orders.length, icon: ClipboardList },
+    { label: "Awaiting fulfilment", value: open, icon: TrendingUp },
+    { label: "Products", value: products.length, icon: Package },
   ];
 
   return (
     <div className="space-y-6">
       {welcome ? <Notice tone="success">Welcome to AIIR! Your store has been created. Add your first product to get started.</Notice> : null}
 
-      <section className="relative isolate overflow-hidden rounded-3xl p-8 text-white sm:p-10">
-        <Image src={images.dashboard} alt="" fill sizes="(min-width: 1024px) 60rem, 100vw" className="-z-20 object-cover" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950 via-brand-950/85 to-brand-900/30" aria-hidden />
-        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent-300">Store overview</p>
+      <section className="rounded-lg bg-ink p-8 text-white sm:p-10">
+        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/80">Store overview</p>
         <h2 className="mt-2 text-3xl font-extrabold text-white">Hello, {user.firstName || user.displayName}</h2>
-        <p className="mt-2 max-w-lg text-brand-100">Here&apos;s how {user.storeName ?? "your store"} is doing. Keep your catalogue fresh to reach more buyers.</p>
+        <p className="mt-2 max-w-lg text-white/85">Here&apos;s how {user.storeName ?? "your store"} is doing. Keep your catalogue fresh to reach more buyers.</p>
         <div className="mt-6 flex flex-wrap gap-3">
           <LinkButton href="/store-manager/products/new" variant="light">
             <PlusCircle className="size-4" aria-hidden /> Add product
@@ -53,9 +51,9 @@ export function StoreOverview({ seed }: { seed: Product[] }) {
       </section>
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {kpis.map(({ label, value, icon: Icon, tone }) => (
+        {kpis.map(({ label, value, icon: Icon }) => (
           <div key={label} className="card p-5">
-            <div className={`grid size-11 place-items-center rounded-xl bg-gradient-to-br text-white ${tone}`}>
+            <div className={`grid size-11 place-items-center rounded-md bg-brand-50 text-brand-700`}>
               <Icon className="size-5" aria-hidden />
             </div>
             <p className="mt-4 text-2xl font-extrabold">{value}</p>
@@ -82,7 +80,7 @@ export function StoreOverview({ seed }: { seed: Product[] }) {
                       {formatDate(o.createdAt)} · {o.billing.firstName} {o.billing.lastName}
                     </p>
                   </div>
-                  <span className="rounded-full bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-700">{orderStatusLabel[o.status]}</span>
+                  <span className="rounded-md bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-700">{orderStatusLabel[o.status]}</span>
                   <span className="font-semibold">{formatMoney(o.vendorTotal)}</span>
                 </li>
               ))}
@@ -105,8 +103,8 @@ export function StoreOverview({ seed }: { seed: Product[] }) {
             <ul className="divide-y divide-line">
               {products.slice(0, 5).map((p) => (
                 <li key={p.id} className="flex items-center gap-4 px-6 py-3">
-                  <span className="relative size-12 shrink-0 overflow-hidden rounded-xl bg-surface">
-                    {p.image ? <Image src={p.image} alt="" fill sizes="3rem" className="object-cover" /> : null}
+                  <span className="relative size-12 shrink-0 overflow-hidden rounded-md bg-surface">
+                    <Media src={p.image} alt="" sizes="3rem" seed={p.name} size="sm" />
                   </span>
                   <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-semibold">{p.name}</p>

@@ -1,72 +1,42 @@
 [
   {
     "slug": "aiir",
-    "name": "AIIR Labs",
-    "city": "Dublin",
-    "country": "Ireland",
-    "about": "AIIR Labs builds and sells AI tools and projects on the AIIR marketplace.",
-    "policies": {
-      "shipping": "Orders are dispatched within 3 working days.",
-      "refund": "Refunds accepted within 30 days for unused items.",
-      "cancellation": "Orders can be cancelled before dispatch."
-    },
-    "rating": 0,
-    "joined": "2025-09-01"
+    "name": "AIIR",
+    "email": "mariyum@yopmail.com",
+    "address": "",
+    "phone": "",
+    "rating": 0
   },
   {
     "slug": "rana-sami",
-    "name": "Rana Robotics",
-    "city": "Cork",
-    "country": "Ireland",
-    "about": "Rana Robotics builds and sells AI tools and projects on the AIIR marketplace.",
-    "policies": {
-      "shipping": "Orders are dispatched within 3 working days.",
-      "refund": "Refunds accepted within 30 days for unused items.",
-      "cancellation": "Orders can be cancelled before dispatch."
-    },
-    "rating": 0,
-    "joined": "2025-09-01"
+    "name": "rana",
+    "email": "rana@yopmail.com",
+    "address": "",
+    "phone": "",
+    "rating": 0
   },
   {
     "slug": "alexa-2_0",
-    "name": "Alexa 2.0",
-    "city": "Athens",
-    "country": "Greece",
-    "about": "Alexa 2.0 builds and sells AI tools and projects on the AIIR marketplace.",
-    "policies": {
-      "shipping": "Orders are dispatched within 3 working days.",
-      "refund": "Refunds accepted within 30 days for unused items.",
-      "cancellation": "Orders can be cancelled before dispatch."
-    },
-    "rating": 0,
-    "joined": "2025-09-01"
+    "name": "Alexa 2_0",
+    "email": "alexa2.0@yopmail.com",
+    "address": "18 New Avenue, In occaecat molestia, North Aegean, 47482, Greece",
+    "phone": "9327461749",
+    "rating": 0
   },
   {
     "slug": "vielka-norman",
-    "name": "Vielka Norman Studio",
-    "city": "Galway",
-    "country": "Ireland",
-    "about": "Vielka Norman Studio builds and sells AI tools and projects on the AIIR marketplace.",
-    "policies": {
-      "shipping": "Orders are dispatched within 3 working days.",
-      "refund": "Refunds accepted within 30 days for unused items.",
-      "cancellation": "Orders can be cancelled before dispatch."
-    },
-    "rating": 0,
-    "joined": "2025-09-01"
+    "name": "Vielka Norman",
+    "email": "vendor+22@yopmail.com",
+    "address": "680 First Parkway, Architecto odit dolo, Omnis eligendi volup, 57195, Central African Republic",
+    "phone": "+1 (596) 708-9023",
+    "rating": 0
   },
   {
     "slug": "vendor_123",
-    "name": "Vendor 123",
-    "city": "Karachi",
-    "country": "Pakistan",
-    "about": "Vendor 123 builds and sells AI tools and projects on the AIIR marketplace.",
-    "policies": {
-      "shipping": "Orders are dispatched within 3 working days.",
-      "refund": "Refunds accepted within 30 days for unused items.",
-      "cancellation": "Orders can be cancelled before dispatch."
-    },
-    "rating": 0,
-    "joined": "2025-09-01"
+    "name": "vendor_123",
+    "email": "vendor123@yopmail.com",
+    "address": "House 23, karachi, Sindh, 12223322, Pakistan",
+    "phone": "0333333333333333333382",
+    "rating": 0
   }
 ]

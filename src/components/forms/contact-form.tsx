@@ -21,13 +21,13 @@ export function ContactForm() {
     <form action={action} noValidate className="space-y-5">
       {state.status === "error" ? <Notice tone="error">{state.message}</Notice> : null}
       <div className="grid gap-5 sm:grid-cols-2">
-        <Input label="Name" name="name" autoComplete="name" required defaultValue={v?.name} error={e.name} />
-        <Input label="Email" name="email" type="email" autoComplete="email" required defaultValue={v?.email} error={e.email} />
+        <Input label="Name" name="name" placeholder="Enter Name" autoComplete="name" required defaultValue={v?.name} error={e.name} />
+        <Input label="Email" name="email" type="email" placeholder="Enter Email Address" autoComplete="email" required defaultValue={v?.email} error={e.email} />
       </div>
-      <Input label="Subject" name="subject" required defaultValue={v?.subject} error={e.subject} />
-      <Textarea label="Message" name="message" required rows={6} defaultValue={v?.message} error={e.message} />
+      <Input label="Subject" name="subject" placeholder="Enter Subject" required defaultValue={v?.subject} error={e.subject} />
+      <Textarea label="Description" name="message" required rows={6} defaultValue={v?.message} error={e.message} />
       <Button type="submit" loading={pending}>
-        Send message
+        Get A Query
       </Button>
     </form>
   );

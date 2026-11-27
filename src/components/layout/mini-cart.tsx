@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { Media } from "@/components/ui/placeholder";
 import Link from "next/link";
 import { useEffect } from "react";
 import { ShoppingCart, Trash2, X } from "lucide-react";
@@ -53,7 +53,7 @@ export function MiniCart() {
               {lines.map((l) => (
                 <li key={l.productId} className="flex gap-4 py-4">
                   <div className="relative size-16 shrink-0 overflow-hidden rounded-lg bg-surface">
-                    {l.image ? <Image src={l.image} alt="" fill sizes="4rem" className="object-cover" /> : null}
+                    <Media src={l.image} alt="" sizes="4rem" seed={l.name} size="sm" />
                   </div>
                   <div className="flex-1">
                     <Link href={`/product/${l.slug}`} onClick={close} className="text-sm font-semibold hover:text-brand-700">

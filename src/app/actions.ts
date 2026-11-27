@@ -1,6 +1,6 @@
 "use server";
 
-import { contactSchema, fieldErrors, inquirySchema, newsletterSchema, reviewSchema } from "@/lib/validation";
+import { commentSchema, contactSchema, fieldErrors, inquirySchema, newsletterSchema, reviewSchema } from "@/lib/validation";
 
 export type FormState = {
   status: "idle" | "success" | "error";
@@ -57,4 +57,14 @@ export async function submitInquiry(_prev: FormState, formData: FormData): Promi
   }
   // TODO(backend): POST /inquiries, routed to the vendor's Store Manager inbox
   return { status: "success", message: "Your question has been sent. The vendor will reply by email." };
+}
+
+export async function submitComment(_prev: FormState, formData: FormData): Promise<FormState> {
+  const values = valuesOf(formData, ["comment", "name", "email", "website", "post"]);
+  const parsed = commentSchema.safeParse(values);
+  if (!parsed.success) {
+    return { status: "error", message: "Please fix the highlighted fields.", errors: fieldErrors(parsed.error), values };
+  }
+  // TODO(backend): POST /posts/{post}/comments (held for moderation)
+  return { status: "success", message: "Your comment is awaiting moderation." };
 }

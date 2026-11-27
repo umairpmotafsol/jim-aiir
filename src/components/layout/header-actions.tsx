@@ -2,114 +2,72 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ArrowRightLeft, Heart, ShoppingCart, User } from "lucide-react";
-import { useCart, computeTotals } from "@/lib/store/cart";
-import { useCompare, useWishlist } from "@/lib/store/lists";
+import { LogOut, ShoppingBag, UserRound } from "lucide-react";
+import { useCart } from "@/lib/store/cart";
 import { useAuth, useCurrentUser } from "@/lib/store/auth";
 import { useHydrated } from "@/lib/store/hydration";
-import { formatMoney } from "@/lib/format";
 
-function CountBadge({ count }: { count: number }) {
-  if (!count) return null;
-  return (
-    <span className="absolute -right-1.5 -top-1.5 grid min-w-5 place-items-center rounded-full bg-accent-500 px-1 text-[11px] font-bold leading-5 text-white">
-      {count > 99 ? "99+" : count}
-    </span>
-  );
-}
-
-/** Login / account links in the top bar. Shows only what applies to the visitor. */
+/** Login button, or Dashboard + Logout once signed in. */
 export function AccountLinks() {
   const hydrated = useHydrated();
   const user = useCurrentUser();
   const logout = useAuth((s) => s.logout);
   const router = useRouter();
 
-  if (!hydrated) return <span className="h-4 w-32" aria-hidden />;
+  if (!hydrated) return <span className="h-10 w-20" aria-hidden />;
 
   if (!user) {
     return (
-      <div className="flex items-center gap-4">
-        <Link href="/my-account" className="hover:text-white">
-          Log in
-        </Link>
-        <Link href="/my-account?action=register" className="hover:text-white">
-          Register
-        </Link>
-        <Link href="/vendor-register" className="font-semibold text-accent-400 hover:text-white">
-          Become a vendor
-        </Link>
-      </div>
+      <Link href="/my-account" className="inline-flex h-10 items-center rounded-md bg-ink px-5 text-sm font-semibold text-white hover:bg-slate-800">
+        Login
+      </Link>
     );
   }
 
   return (
-    <div className="flex items-center gap-4">
-      <span className="text-brand-300">Hi, {user.displayName}</span>
-      {user.role === "vendor" ? (
-        <Link href="/store-manager" className="font-semibold text-accent-400 hover:text-white">
-          Store manager
-        </Link>
-      ) : null}
-      <Link href="/my-account" className="hover:text-white">
-        My account
+    <div className="flex items-center gap-1">
+      <Link
+        href={user.role === "vendor" ? "/store-manager" : "/my-account"}
+        className="inline-flex h-10 items-center gap-2 rounded-md px-3 text-sm font-medium text-slate-700 hover:bg-surface"
+      >
+        <UserRound className="size-4" aria-hidden />
+        <span className="hidden sm:inline">Dashboard</span>
       </Link>
       <button
         type="button"
-        className="hover:text-white"
+        aria-label="Logout"
+        title="Logout"
+        className="grid size-10 place-items-center rounded-md text-slate-500 hover:bg-surface hover:text-ink"
         onClick={() => {
           logout();
-          router.push("/");
+          router.push("/my-account");
         }}
       >
-        Log out
+        <LogOut className="size-4" aria-hidden />
       </button>
     </div>
   );
 }
 
-export function HeaderActions() {
+export function CartButton() {
   const hydrated = useHydrated();
-  const lines = useCart((s) => s.lines);
-  const coupon = useCart((s) => s.couponCode);
-  const method = useCart((s) => s.shippingMethod);
+  const count = useCart((s) => s.lines.reduce((n, l) => n + l.quantity, 0));
   const setDrawerOpen = useCart((s) => s.setDrawerOpen);
-  const wishlist = useWishlist((s) => s.ids.length);
-  const compare = useCompare((s) => s.ids.length);
-  const user = useCurrentUser();
-  const totals = computeTotals(lines, coupon, method);
-
-  const iconLink = "relative grid size-10 place-items-center rounded-lg text-slate-700 hover:bg-slate-100 hover:text-brand-700";
+  const shown = hydrated ? count : 0;
 
   return (
-    <div className="ml-auto flex items-center gap-1 sm:gap-2">
-      <Link href="/compare" className={`${iconLink} hidden sm:grid`} aria-label={`Compare (${hydrated ? compare : 0} items)`}>
-        <ArrowRightLeft className="size-5" />
-        <CountBadge count={hydrated ? compare : 0} />
-      </Link>
-      <Link href="/wishlist" className={`${iconLink} hidden sm:grid`} aria-label={`Wishlist (${hydrated ? wishlist : 0} items)`}>
-        <Heart className="size-5" />
-        <CountBadge count={hydrated ? wishlist : 0} />
-      </Link>
-      <Link
-        href={hydrated && user?.role === "vendor" ? "/store-manager" : "/my-account"}
-        className={iconLink}
-        aria-label={hydrated && user ? "My account" : "Log in or register"}
-      >
-        <User className="size-5" />
-      </Link>
-      <button
-        type="button"
-        onClick={() => setDrawerOpen(true)}
-        className="relative flex h-10 items-center gap-2 rounded-lg px-2 text-slate-700 hover:bg-slate-100 hover:text-brand-700"
-        aria-label={`Open cart (${hydrated ? totals.itemCount : 0} items)`}
-      >
-        <span className="relative">
-          <ShoppingCart className="size-5" />
-          <CountBadge count={hydrated ? totals.itemCount : 0} />
+    <button
+      type="button"
+      onClick={() => setDrawerOpen(true)}
+      className="relative grid size-10 place-items-center rounded-md text-slate-700 hover:bg-surface"
+      aria-label={`Open cart (${shown} items)`}
+    >
+      <ShoppingBag className="size-5" />
+      {shown ? (
+        <span className="absolute -right-0.5 -top-0.5 grid min-w-5 place-items-center rounded-full bg-accent-500 px-1 text-[11px] font-bold leading-5 text-ink">
+          {shown > 99 ? "99+" : shown}
         </span>
-        <span className="hidden text-sm font-semibold lg:inline">{formatMoney(hydrated ? totals.subtotal : 0)}</span>
-      </button>
-    </div>
+      ) : null}
+    </button>
   );
 }

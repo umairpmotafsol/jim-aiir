@@ -44,7 +44,7 @@ export function AccountShell({ children }: { children: ReactNode }) {
 
   return (
     <div className="grid gap-8 lg:grid-cols-[15rem_1fr]">
-      <nav aria-label="Account" className="h-fit rounded-2xl border border-line p-3">
+      <nav aria-label="Account" className="h-fit rounded-lg border border-line p-3">
         <ul className="space-y-1">
           {nav.map(({ href, label, icon: Icon }) => {
             const active = href === "/my-account" ? pathname === href : pathname.startsWith(href);

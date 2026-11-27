@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
+import { Media } from "@/components/ui/placeholder";
 import Link from "next/link";
-import { ArrowRightLeft, Heart, X } from "lucide-react";
+import { ArrowRightLeft, X } from "lucide-react";
 import { useCompare, useWishlist } from "@/lib/store/lists";
 import { useHydrated } from "@/lib/store/hydration";
 import { EmptyState, Price, Rating, Skeleton } from "@/components/ui/misc";
@@ -17,26 +17,25 @@ export function WishlistView({ products, vendors }: { products: Product[]; vendo
   if (!hydrated) return <Skeleton className="h-64" />;
   const items = ids.map((id) => products.find((p) => p.id === id)).filter((p): p is Product => !!p);
 
-  if (!items.length) {
-    return (
-      <EmptyState icon={<Heart className="size-7" />} title="Your wishlist is empty" action={<LinkButton href="/shop">Browse products</LinkButton>}>
-        Tap the heart on any product to save it for later.
-      </EmptyState>
-    );
-  }
-
   return (
-    <div className="overflow-x-auto rounded-2xl border border-line">
+    <div className="overflow-x-auto rounded-lg border border-line bg-white">
       <table className="w-full min-w-[40rem] text-sm">
         <thead className="bg-surface text-left text-xs uppercase tracking-wider text-muted">
           <tr>
-            <th scope="col" className="px-5 py-3 font-semibold">Product</th>
-            <th scope="col" className="px-5 py-3 font-semibold">Price</th>
-            <th scope="col" className="px-5 py-3 font-semibold">Stock</th>
+            <th scope="col" className="px-5 py-3 font-semibold">Product name</th>
+            <th scope="col" className="px-5 py-3 font-semibold">Unit price</th>
+            <th scope="col" className="px-5 py-3 font-semibold">Stock status</th>
             <th scope="col" className="px-5 py-3"><span className="sr-only">Actions</span></th>
           </tr>
         </thead>
         <tbody className="divide-y divide-line">
+          {items.length ? null : (
+            <tr>
+              <td colSpan={4} className="px-5 py-8 text-center text-muted">
+                No products added to the wishlist
+              </td>
+            </tr>
+          )}
           {items.map((p) => {
             const vendor = vendors.find((v) => v.slug === p.vendor);
             return (
@@ -44,13 +43,13 @@ export function WishlistView({ products, vendors }: { products: Product[]; vendo
                 <td className="px-5 py-4">
                   <div className="flex items-center gap-4">
                     <div className="relative size-16 shrink-0 overflow-hidden rounded-lg bg-surface">
-                      {p.images[0] ? <Image src={p.images[0].thumb} alt="" fill sizes="4rem" className="object-cover" /> : null}
+                      <Media src={p.images[0].thumb} alt="" sizes="4rem" seed={p.name} size="sm" />
                     </div>
                     <div>
                       <Link href={`/product/${p.slug}`} className="font-semibold hover:text-brand-700">
                         {p.name}
                       </Link>
-                      <p className="text-xs text-muted">{vendor ? vendor.name : "Sold by AIIR"}</p>
+                      {vendor ? <p className="text-xs text-muted">Store: {vendor.name}</p> : null}
                     </div>
                   </div>
                 </td>
@@ -110,7 +109,7 @@ export function CompareView({ products, vendors, categories }: { products: Produ
           Clear all
         </button>
       </div>
-      <div className="overflow-x-auto rounded-2xl border border-line">
+      <div className="overflow-x-auto rounded-lg border border-line">
         <table className="w-full min-w-[40rem] table-fixed text-sm">
           <thead>
             <tr>
@@ -118,8 +117,8 @@ export function CompareView({ products, vendors, categories }: { products: Produ
               {items.map((p) => (
                 <th key={p.id} scope="col" className="px-4 py-4 text-left align-top font-normal">
                   <div className="relative mb-3 aspect-square overflow-hidden rounded-lg bg-surface">
-                    {p.images[0] ? <Image src={p.images[0].src} alt="" fill sizes="15rem" className="object-cover" /> : null}
-                    <button type="button" onClick={() => remove(p.id)} className="absolute right-2 top-2 rounded-full bg-white p-1.5 shadow" aria-label={`Remove ${p.name} from compare`}>
+                    <Media src={p.images[0].src} alt="" sizes="15rem" seed={p.name} />
+                    <button type="button" onClick={() => remove(p.id)} className="absolute right-2 top-2 rounded-md bg-white p-1.5 shadow" aria-label={`Remove ${p.name} from compare`}>
                       <X className="size-3.5" />
                     </button>
                   </div>
