@@ -1,0 +1,56 @@
+[
+  {
+    "id": 41,
+    "slug": "applications",
+    "name": "AI Applications",
+    "parent": null
+  },
+  {
+    "id": 29,
+    "slug": "capabilities",
+    "name": "AI Capabilities",
+    "parent": null
+  },
+  {
+    "id": 34,
+    "slug": "ai",
+    "name": "AI Functions",
+    "parent": null
+  },
+  {
+    "id": 32,
+    "slug": "aitech",
+    "name": "AI Tech",
+    "parent": null
+  },
+  {
+    "id": 50,
+    "slug": "computer-accessories",
+    "name": "Computer Accessories",
+    "parent": null
+  },
+  {
+    "id": 31,
+    "slug": "apis",
+    "name": "Development/APIs",
+    "parent": null
+  },
+  {
+    "id": 117,
+    "slug": "digital",
+    "name": "Digital",
+    "parent": "applications"
+  },
+  {
+    "id": 116,
+    "slug": "robotics",
+    "name": "Robotics",
+    "parent": "aitech"
+  },
+  {
+    "id": 15,
+    "slug": "uncategorized",
+    "name": "Uncategorized",
+    "parent": null
+  }
+]

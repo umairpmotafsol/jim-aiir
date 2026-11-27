@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-jakarta), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* AIIR brand: confident cobalt on deep navy, with a restrained teal accent. */
+  --color-brand-50: #eef4ff;
+  --color-brand-100: #dbe6fe;
+  --color-brand-200: #bfd3fe;
+  --color-brand-300: #93b4fd;
+  --color-brand-400: #608bfa;
+  --color-brand-500: #3b66f5;
+  --color-brand-600: #2549e6;
+  --color-brand-700: #1d38cc;
+  --color-brand-800: #1c2f9f;
+  --color-brand-900: #0f1d4a;
+  --color-brand-950: #070f2b;
+
+  --color-accent-300: #5eead4;
+  --color-accent-400: #2dd4bf;
+  --color-accent-500: #14b8a6;
+  --color-accent-600: #0d9488;
+
+  --color-ink: #0b1220;
+  --color-muted: #5b6475;
+  --color-line: #e4e7ee;
+  --color-surface: #f5f7fb;
+
+  --shadow-card: 0 1px 2px rgb(15 29 74 / 0.04), 0 4px 16px -4px rgb(15 29 74 / 0.08);
+  --shadow-lift: 0 2px 4px rgb(15 29 74 / 0.04), 0 18px 40px -12px rgb(15 29 74 / 0.22);
+
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white text-ink antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-ink;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-500;
+  }
+  ::selection {
+    @apply bg-brand-600 text-white;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-brand-600;
+  }
+  .card {
+    @apply rounded-2xl border border-line bg-white shadow-card;
+  }
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-300 via-white to-accent-300 bg-clip-text text-transparent;
+  }
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .bg-dots {
+    background-image: radial-gradient(rgb(37 73 230 / 0.12) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+  .prose-aiir p {
+    @apply mb-5 leading-7 text-slate-600;
+  }
+  .prose-aiir h2 {
+    @apply mt-10 mb-3 text-2xl font-bold;
+  }
+  .prose-aiir h3 {
+    @apply mt-8 mb-2 text-lg font-semibold;
+  }
+  .prose-aiir ul {
+    @apply mb-5 list-disc space-y-1.5 pl-5 text-slate-600 marker:text-brand-500;
+  }
+  .prose-aiir a {
+    @apply font-medium text-brand-700 underline underline-offset-2;
+  }
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "slug": "aiir",
+    "name": "AIIR Labs",
+    "city": "Dublin",
+    "country": "Ireland",
+    "about": "AIIR Labs builds and sells AI tools and projects on the AIIR marketplace.",
+    "policies": {
+      "shipping": "Orders are dispatched within 3 working days.",
+      "refund": "Refunds accepted within 30 days for unused items.",
+      "cancellation": "Orders can be cancelled before dispatch."
+    },
+    "rating": 0,
+    "joined": "2025-09-01"
+  },
+  {
+    "slug": "rana-sami",
+    "name": "Rana Robotics",
+    "city": "Cork",
+    "country": "Ireland",
+    "about": "Rana Robotics builds and sells AI tools and projects on the AIIR marketplace.",
+    "policies": {
+      "shipping": "Orders are dispatched within 3 working days.",
+      "refund": "Refunds accepted within 30 days for unused items.",
+      "cancellation": "Orders can be cancelled before dispatch."
+    },
+    "rating": 0,
+    "joined": "2025-09-01"
+  },
+  {
+    "slug": "alexa-2_0",
+    "name": "Alexa 2.0",
+    "city": "Athens",
+    "country": "Greece",
+    "about": "Alexa 2.0 builds and sells AI tools and projects on the AIIR marketplace.",
+    "policies": {
+      "shipping": "Orders are dispatched within 3 working days.",
+      "refund": "Refunds accepted within 30 days for unused items.",
+      "cancellation": "Orders can be cancelled before dispatch."
+    },
+    "rating": 0,
+    "joined": "2025-09-01"
+  },
+  {
+    "slug": "vielka-norman",
+    "name": "Vielka Norman Studio",
+    "city": "Galway",
+    "country": "Ireland",
+    "about": "Vielka Norman Studio builds and sells AI tools and projects on the AIIR marketplace.",
+    "policies": {
+      "shipping": "Orders are dispatched within 3 working days.",
+      "refund": "Refunds accepted within 30 days for unused items.",
+      "cancellation": "Orders can be cancelled before dispatch."
+    },
+    "rating": 0,
+    "joined": "2025-09-01"
+  },
+  {
+    "slug": "vendor_123",
+    "name": "Vendor 123",
+    "city": "Karachi",
+    "country": "Pakistan",
+    "about": "Vendor 123 builds and sells AI tools and projects on the AIIR marketplace.",
+    "policies": {
+      "shipping": "Orders are dispatched within 3 working days.",
+      "refund": "Refunds accepted within 30 days for unused items.",
+      "cancellation": "Orders can be cancelled before dispatch."
+    },
+    "rating": 0,
+    "joined": "2025-09-01"
+  }
+]

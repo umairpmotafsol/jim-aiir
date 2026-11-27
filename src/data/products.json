@@ -1,0 +1,757 @@
+[
+  {
+    "id": 3786,
+    "slug": "oscar-herring",
+    "name": "Oscar Herring",
+    "type": "simple",
+    "description": [],
+    "shortDescription": [],
+    "regularPrice": 0,
+    "price": 0,
+    "onSale": false,
+    "images": [
+      {
+        "src": "/images/products/3786-1.webp",
+        "thumb": "/images/products/3786-1-thumb.webp",
+        "alt": "Oscar Herring"
+      },
+      {
+        "src": "/images/products/3786-2.webp",
+        "thumb": "/images/products/3786-2-thumb.webp",
+        "alt": "Oscar Herring – view 2"
+      }
+    ],
+    "categories": [
+      "applications",
+      "computer-accessories",
+      "apis",
+      "digital",
+      "robotics"
+    ],
+    "tags": [
+      "Sed perspiciatis vo"
+    ],
+    "rating": 0,
+    "reviewCount": 0,
+    "inStock": true,
+    "stock": null,
+    "soldIndividually": false,
+    "purchasable": false,
+    "groupedProducts": [],
+    "vendor": null,
+    "createdRank": 0
+  },
+  {
+    "id": 3783,
+    "slug": "uq",
+    "name": "uq",
+    "type": "simple",
+    "description": [],
+    "shortDescription": [],
+    "regularPrice": 20000,
+    "price": 10000,
+    "onSale": true,
+    "images": [
+      {
+        "src": "/images/products/3783-1.webp",
+        "thumb": "/images/products/3783-1-thumb.webp",
+        "alt": "uq"
+      }
+    ],
+    "categories": [
+      "uncategorized"
+    ],
+    "tags": [],
+    "rating": 0,
+    "reviewCount": 0,
+    "inStock": true,
+    "stock": null,
+    "soldIndividually": false,
+    "purchasable": true,
+    "groupedProducts": [],
+    "vendor": "vendor_123",
+    "createdRank": 1
+  },
+  {
+    "id": 3782,
+    "slug": "mouse",
+    "name": "Mouse",
+    "type": "grouped",
+    "description": [],
+    "shortDescription": [],
+    "regularPrice": 0,
+    "price": 0,
+    "onSale": false,
+    "images": [
+      {
+        "src": "/images/products/3782-1.webp",
+        "thumb": "/images/products/3782-1-thumb.webp",
+        "alt": "Mouse"
+      }
+    ],
+    "categories": [
+      "uncategorized"
+    ],
+    "tags": [],
+    "rating": 0,
+    "reviewCount": 0,
+    "inStock": true,
+    "stock": null,
+    "soldIndividually": false,
+    "purchasable": false,
+    "groupedProducts": [],
+    "vendor": "vendor_123",
+    "createdRank": 2
+  },
+  {
+    "id": 3768,
+    "slug": "how-to-code",
+    "name": "How to Code",
+    "type": "simple",
+    "description": [],
+    "shortDescription": [
+      "Download this product!"
+    ],
+    "regularPrice": 550,
+    "price": 550,
+    "onSale": false,
+    "images": [
+      {
+        "src": "/images/products/3768-1.webp",
+        "thumb": "/images/products/3768-1-thumb.webp",
+        "alt": "How to Code"
+      },
+      {
+        "src": "/images/products/3768-2.webp",
+        "thumb": "/images/products/3768-2-thumb.webp",
+        "alt": "How to Code – view 2"
+      }
+    ],
+    "categories": [
+      "uncategorized"
+    ],
+    "tags": [],
+    "rating": 0,
+    "reviewCount": 0,
+    "inStock": true,
+    "stock": null,
+    "soldIndividually": false,
+    "purchasable": true,
+    "groupedProducts": [],
+    "vendor": null,
+    "createdRank": 3
+  },
+  {
+    "id": 3750,
+    "slug": "laptop-glasses",
+    "name": "Laptop + glasses",
+    "type": "simple",
+    "description": [],
+    "shortDescription": [],
+    "regularPrice": 400,
+    "price": 200,
+    "onSale": true,
+    "images": [
+      {
+        "src": "/images/products/3750-1.webp",
+        "thumb": "/images/products/3750-1-thumb.webp",
+        "alt": "Laptop + glasses"
+      }
+    ],
+    "categories": [
+      "uncategorized"
+    ],
+    "tags": [],
+    "rating": 0,
+    "reviewCount": 0,
+    "inStock": true,
+    "stock": null,
+    "soldIndividually": false,
+    "purchasable": true,
+    "groupedProducts": [],
+    "vendor": "vielka-norman",
+    "createdRank": 4
+  },
+  {
+    "id": 3726,
+    "slug": "sample-robo",
+    "name": "Sample Robo",
+    "type": "simple",
+    "description": [
+      "local"
+    ],
+    "shortDescription": [
+      "Local"
+    ],
+    "regularPrice": 200,
+    "price": 200,
+    "onSale": false,
+    "images": [
+      {
+        "src": "/images/products/3726-1.webp",
+        "thumb": "/images/products/3726-1-thumb.webp",
+        "alt": "Sample Robo"
+      }
+    ],
+    "categories": [
+      "uncategorized"
+    ],
+    "tags": [],
+    "rating": 0,
+    "reviewCount": 0,
+    "inStock": true,
+    "stock": 11,
+    "soldIndividually": false,
+    "purchasable": true,
+    "groupedProducts": [],
+    "vendor": "alexa-2_0",
+    "createdRank": 5
+  },
+  {
+    "id": 3024,
+    "slug": "test2",
+    "name": "Machine Learning",
+    "type": "simple",
+    "description": [
+      "(AI) is technology that enables computers and machines to simulate human intelligence and problem-solving capabilities. AI systems can learn from data, recognize patterns, make decisions, and perform tasks that typically require human cognition—such as understanding language, recognizing images, and solving complex problems."
+    ],
+    "shortDescription": [
+      "AI is technology that enables computers to learn, reason, and perform tasks that typically require human intelligence."
+    ],
+    "regularPrice": 700,
+    "price": 700,
+    "onSale": false,
+    "images": [
+      {
+        "src": "/images/products/3024-1.webp",
+        "thumb": "/images/products/3024-1-thumb.webp",
+        "alt": "Machine Learning"
+      },
+      {
+        "src": "/images/products/3024-2.webp",
+        "thumb": "/images/products/3024-2-thumb.webp",
+        "alt": "Machine Learning – view 2"
+      }
+    ],
+    "categories": [
+      "capabilities"
+    ],
+    "tags": [],
+    "rating": 0,
+    "reviewCount": 0,
+    "inStock": true,
+    "stock": null,
+    "soldIndividually": false,
+    "purchasable": true,
+    "groupedProducts": [],
+    "vendor": "aiir",
+    "createdRank": 6
+  },
+  {
+    "id": 3375,
+    "slug": "robo",
+    "name": "Robotics",
+    "type": "simple",
+    "description": [
+      "Portable audio devices designed to fit directly into the outer ear or ear canal. They are commonly used for listening to music, taking phone calls, or consuming audio content on the go. Earbuds typically connect to devices like smartphones, tablets, or computers via a wired (3.5mm jack or USB-C) or wireless (Bluetooth) connection.",
+      "Key Features of Earbuds:",
+      "Compact and lightweight – easy to carry and ideal for everyday use or travel.",
+      "Sound quality – varies by model, but many offer high-quality audio with balanced bass and treble.",
+      "Noise isolation or cancellation – some models include passive isolation through a snug fit, while more advanced earbuds offer active noise cancellation (ANC) .",
+      "Microphone and controls – many earbuds include built-in mics and buttons or touch controls for adjusting volume, changing tracks, or answering calls."
+    ],
+    "shortDescription": [],
+    "regularPrice": 200,
+    "price": 150,
+    "onSale": true,
+    "images": [
+      {
+        "src": "/images/products/3375-1.webp",
+        "thumb": "/images/products/3375-1-thumb.webp",
+        "alt": "Robotics"
+      },
+      {
+        "src": "/images/products/3375-2.webp",
+        "thumb": "/images/products/3375-2-thumb.webp",
+        "alt": "Robotics – view 2"
+      },
+      {
+        "src": "/images/products/3375-3.webp",
+        "thumb": "/images/products/3375-3-thumb.webp",
+        "alt": "Robotics – view 3"
+      },
+      {
+        "src": "/images/products/3375-4.webp",
+        "thumb": "/images/products/3375-4-thumb.webp",
+        "alt": "Robotics – view 4"
+      },
+      {
+        "src": "/images/products/3375-5.webp",
+        "thumb": "/images/products/3375-5-thumb.webp",
+        "alt": "Robotics – view 5"
+      }
+    ],
+    "categories": [
+      "uncategorized"
+    ],
+    "tags": [],
+    "rating": 0,
+    "reviewCount": 0,
+    "inStock": true,
+    "stock": null,
+    "soldIndividually": false,
+    "purchasable": true,
+    "groupedProducts": [],
+    "vendor": null,
+    "createdRank": 7
+  },
+  {
+    "id": 3186,
+    "slug": "hello",
+    "name": "Robot",
+    "type": "simple",
+    "description": [
+      "AI (Artificial Intelligence) refers to computer systems designed to perform tasks that typically require human intelligence. This includes learning from experience, recognizing patterns, understanding language, making decisions, and solving problems. AI powers many everyday technologies like virtual assistants, recommendation systems, image recognition, and autonomous vehicles. It ranges from narrow AI (designed for specific tasks) to the broader goal of creating systems that can think and reason across multiple domai"
+    ],
+    "shortDescription": [
+      "AI is technology that enables computers to learn, reason, and perform tasks that typically require human intelligence."
+    ],
+    "regularPrice": 300,
+    "price": 200,
+    "onSale": true,
+    "images": [
+      {
+        "src": "/images/products/3186-1.webp",
+        "thumb": "/images/products/3186-1-thumb.webp",
+        "alt": "Robot"
+      }
+    ],
+    "categories": [
+      "uncategorized"
+    ],
+    "tags": [],
+    "rating": 0,
+    "reviewCount": 0,
+    "inStock": true,
+    "stock": null,
+    "soldIndividually": false,
+    "purchasable": true,
+    "groupedProducts": [],
+    "vendor": "rana-sami",
+    "createdRank": 8
+  },
+  {
+    "id": 3187,
+    "slug": "heo",
+    "name": "Handsfree",
+    "type": "grouped",
+    "description": [
+      "(AI) is technology that enables computers and machines to simulate human intelligence and problem-solving capabilities. AI systems can learn from data, recognize patterns, make decisions, and perform tasks that typically require human cognition—such as understanding language, recognizing images, and solving complex problems."
+    ],
+    "shortDescription": [
+      "heo"
+    ],
+    "regularPrice": 0,
+    "price": 0,
+    "onSale": false,
+    "images": [
+      {
+        "src": "/images/products/3187-1.webp",
+        "thumb": "/images/products/3187-1-thumb.webp",
+        "alt": "Handsfree"
+      },
+      {
+        "src": "/images/products/3187-2.webp",
+        "thumb": "/images/products/3187-2-thumb.webp",
+        "alt": "Handsfree – view 2"
+      }
+    ],
+    "categories": [
+      "capabilities"
+    ],
+    "tags": [],
+    "rating": 0,
+    "reviewCount": 0,
+    "inStock": true,
+    "stock": null,
+    "soldIndividually": false,
+    "purchasable": false,
+    "groupedProducts": [],
+    "vendor": "rana-sami",
+    "createdRank": 9
+  },
+  {
+    "id": 3019,
+    "slug": "test",
+    "name": "test",
+    "type": "simple",
+    "description": [
+      "regergr"
+    ],
+    "shortDescription": [
+      "frgvegrve"
+    ],
+    "regularPrice": 400,
+    "price": 400,
+    "onSale": false,
+    "images": [
+      {
+        "src": "/images/products/3019-1.webp",
+        "thumb": "/images/products/3019-1-thumb.webp",
+        "alt": "test"
+      }
+    ],
+    "categories": [
+      "uncategorized"
+    ],
+    "tags": [],
+    "rating": 0,
+    "reviewCount": 0,
+    "inStock": true,
+    "stock": null,
+    "soldIndividually": false,
+    "purchasable": true,
+    "groupedProducts": [],
+    "vendor": "aiir",
+    "createdRank": 10
+  },
+  {
+    "id": 2756,
+    "slug": "smart-copy",
+    "name": "Smart AI",
+    "type": "simple",
+    "description": [
+      "(AI) is technology that enables computers and machines to simulate human intelligence and problem-solving capabilities. AI systems can learn from data, recognize patterns, make decisions, and perform tasks that typically require human cognition—such as understanding language, recognizing images, and solving complex problems."
+    ],
+    "shortDescription": [],
+    "regularPrice": 70,
+    "price": 70,
+    "onSale": false,
+    "images": [
+      {
+        "src": "/images/products/2756-1.webp",
+        "thumb": "/images/products/2756-1-thumb.webp",
+        "alt": "Smart AI"
+      },
+      {
+        "src": "/images/products/2756-2.webp",
+        "thumb": "/images/products/2756-2-thumb.webp",
+        "alt": "Smart AI – view 2"
+      },
+      {
+        "src": "/images/products/2756-3.webp",
+        "thumb": "/images/products/2756-3-thumb.webp",
+        "alt": "Smart AI – view 3"
+      }
+    ],
+    "categories": [
+      "applications",
+      "capabilities",
+      "ai",
+      "aitech",
+      "apis"
+    ],
+    "tags": [],
+    "rating": 0,
+    "reviewCount": 0,
+    "inStock": true,
+    "stock": 12,
+    "soldIndividually": false,
+    "purchasable": true,
+    "groupedProducts": [],
+    "vendor": null,
+    "createdRank": 11
+  },
+  {
+    "id": 2755,
+    "slug": "neural-copy",
+    "name": "Neural",
+    "type": "simple",
+    "description": [
+      "(AI) is technology that enables computers and machines to simulate human intelligence and problem-solving capabilities. AI systems can learn from data, recognize patterns, make decisions, and perform tasks that typically require human cognition—such as understanding language, recognizing images, and solving complex problems."
+    ],
+    "shortDescription": [
+      "Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo."
+    ],
+    "regularPrice": 39,
+    "price": 39,
+    "onSale": false,
+    "images": [
+      {
+        "src": "/images/products/2755-1.webp",
+        "thumb": "/images/products/2755-1-thumb.webp",
+        "alt": "Neural"
+      },
+      {
+        "src": "/images/products/2755-2.webp",
+        "thumb": "/images/products/2755-2-thumb.webp",
+        "alt": "Neural – view 2"
+      }
+    ],
+    "categories": [
+      "applications",
+      "capabilities",
+      "ai",
+      "aitech",
+      "apis"
+    ],
+    "tags": [],
+    "rating": 0,
+    "reviewCount": 0,
+    "inStock": true,
+    "stock": null,
+    "soldIndividually": false,
+    "purchasable": true,
+    "groupedProducts": [],
+    "vendor": null,
+    "createdRank": 12
+  },
+  {
+    "id": 2754,
+    "slug": "neural-neural-networks-2",
+    "name": "Networks",
+    "type": "simple",
+    "description": [
+      "(AI) is technology that enables computers and machines to simulate human intelligence and problem-solving capabilities. AI systems can learn from data, recognize patterns, make decisions, and perform tasks that typically require human cognition—such as understanding language, recognizing images, and solving complex problems."
+    ],
+    "shortDescription": [
+      "AI is technology that enables computers to learn, reason, and perform tasks that typically require human intelligence."
+    ],
+    "regularPrice": 39,
+    "price": 33,
+    "onSale": true,
+    "images": [
+      {
+        "src": "/images/products/2754-1.webp",
+        "thumb": "/images/products/2754-1-thumb.webp",
+        "alt": "Networks"
+      },
+      {
+        "src": "/images/products/2754-2.webp",
+        "thumb": "/images/products/2754-2-thumb.webp",
+        "alt": "Networks – view 2"
+      }
+    ],
+    "categories": [
+      "applications",
+      "apis"
+    ],
+    "tags": [],
+    "rating": 0,
+    "reviewCount": 0,
+    "inStock": true,
+    "stock": null,
+    "soldIndividually": false,
+    "purchasable": true,
+    "groupedProducts": [],
+    "vendor": null,
+    "createdRank": 13
+  },
+  {
+    "id": 2753,
+    "slug": "smart-smart-tools-copy",
+    "name": "AI Smart Tools",
+    "type": "simple",
+    "description": [
+      "(AI) is technology that enables computers and machines to simulate human intelligence and problem-solving capabilities. AI systems can learn from data, recognize patterns, make decisions, and perform tasks that typically require human cognition—such as understanding language, recognizing images, and solving complex problems."
+    ],
+    "shortDescription": [],
+    "regularPrice": 70,
+    "price": 70,
+    "onSale": false,
+    "images": [
+      {
+        "src": "/images/products/2753-1.webp",
+        "thumb": "/images/products/2753-1-thumb.webp",
+        "alt": "AI Smart Tools"
+      },
+      {
+        "src": "/images/products/2753-2.webp",
+        "thumb": "/images/products/2753-2-thumb.webp",
+        "alt": "AI Smart Tools – view 2"
+      }
+    ],
+    "categories": [
+      "applications",
+      "aitech",
+      "apis"
+    ],
+    "tags": [],
+    "rating": 5,
+    "reviewCount": 1,
+    "inStock": true,
+    "stock": 13,
+    "soldIndividually": false,
+    "purchasable": true,
+    "groupedProducts": [],
+    "vendor": null,
+    "createdRank": 14
+  },
+  {
+    "id": 2728,
+    "slug": "smart",
+    "name": "Smart",
+    "type": "simple",
+    "description": [
+      "(AI) is technology that enables computers and machines to simulate human intelligence and problem-solving capabilities. AI systems can learn from data, recognize patterns, make decisions, and perform tasks that typically require human cognition—such as understanding language, recognizing images, and solving complex problems."
+    ],
+    "shortDescription": [],
+    "regularPrice": 70,
+    "price": 70,
+    "onSale": false,
+    "images": [
+      {
+        "src": "/images/products/2728-1.webp",
+        "thumb": "/images/products/2728-1-thumb.webp",
+        "alt": "Smart"
+      },
+      {
+        "src": "/images/products/2728-2.webp",
+        "thumb": "/images/products/2728-2-thumb.webp",
+        "alt": "Smart – view 2"
+      }
+    ],
+    "categories": [
+      "applications",
+      "capabilities",
+      "ai",
+      "aitech",
+      "apis"
+    ],
+    "tags": [],
+    "rating": 0,
+    "reviewCount": 0,
+    "inStock": true,
+    "stock": 11,
+    "soldIndividually": false,
+    "purchasable": true,
+    "groupedProducts": [],
+    "vendor": null,
+    "createdRank": 15
+  },
+  {
+    "id": 2724,
+    "slug": "neural",
+    "name": "Neural",
+    "type": "simple",
+    "description": [
+      "(AI) is technology that enables computers and machines to simulate human intelligence and problem-solving capabilities. AI systems can learn from data, recognize patterns, make decisions, and perform tasks that typically require human cognition—such as understanding language, recognizing images, and solving complex problems."
+    ],
+    "shortDescription": [
+      "Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo."
+    ],
+    "regularPrice": 39,
+    "price": 39,
+    "onSale": false,
+    "images": [
+      {
+        "src": "/images/products/2724-1.webp",
+        "thumb": "/images/products/2724-1-thumb.webp",
+        "alt": "Neural"
+      },
+      {
+        "src": "/images/products/2724-2.webp",
+        "thumb": "/images/products/2724-2-thumb.webp",
+        "alt": "Neural – view 2"
+      }
+    ],
+    "categories": [
+      "applications",
+      "capabilities",
+      "ai",
+      "aitech",
+      "apis"
+    ],
+    "tags": [],
+    "rating": 0,
+    "reviewCount": 0,
+    "inStock": true,
+    "stock": null,
+    "soldIndividually": false,
+    "purchasable": true,
+    "groupedProducts": [],
+    "vendor": null,
+    "createdRank": 16
+  },
+  {
+    "id": 2207,
+    "slug": "neural-neural-networks",
+    "name": "Neural Networks",
+    "type": "simple",
+    "description": [
+      "(AI) is technology that enables computers and machines to simulate human intelligence and problem-solving capabilities. AI systems can learn from data, recognize patterns, make decisions, and perform tasks that typically require human cognition—such as understanding language, recognizing images, and solving complex problems."
+    ],
+    "shortDescription": [
+      "Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo."
+    ],
+    "regularPrice": 39,
+    "price": 39,
+    "onSale": false,
+    "images": [
+      {
+        "src": "/images/products/2207-1.webp",
+        "thumb": "/images/products/2207-1-thumb.webp",
+        "alt": "Neural Networks"
+      },
+      {
+        "src": "/images/products/2207-2.webp",
+        "thumb": "/images/products/2207-2-thumb.webp",
+        "alt": "Neural Networks – view 2"
+      }
+    ],
+    "categories": [
+      "applications",
+      "apis"
+    ],
+    "tags": [],
+    "rating": 0,
+    "reviewCount": 0,
+    "inStock": true,
+    "stock": null,
+    "soldIndividually": false,
+    "purchasable": true,
+    "groupedProducts": [],
+    "vendor": "aiir",
+    "createdRank": 17
+  },
+  {
+    "id": 2200,
+    "slug": "bluetooth-speaker-2",
+    "name": "Chat bot Tools",
+    "type": "simple",
+    "description": [
+      "(AI) is technology that enables computers and machines to simulate human intelligence and problem-solving capabilities. AI systems can learn from data, recognize patterns, make decisions, and perform tasks that typically require human cognition—such as understanding language, recognizing images, and solving complex problems."
+    ],
+    "shortDescription": [],
+    "regularPrice": 70,
+    "price": 70,
+    "onSale": false,
+    "images": [
+      {
+        "src": "/images/products/2200-1.webp",
+        "thumb": "/images/products/2200-1-thumb.webp",
+        "alt": "Chat bot Tools"
+      },
+      {
+        "src": "/images/products/2200-2.webp",
+        "thumb": "/images/products/2200-2-thumb.webp",
+        "alt": "Chat bot Tools – view 2"
+      }
+    ],
+    "categories": [
+      "applications",
+      "aitech",
+      "apis"
+    ],
+    "tags": [],
+    "rating": 0,
+    "reviewCount": 0,
+    "inStock": true,
+    "stock": 1,
+    "soldIndividually": false,
+    "purchasable": true,
+    "groupedProducts": [],
+    "vendor": "aiir",
+    "createdRank": 18
+  }
+]
